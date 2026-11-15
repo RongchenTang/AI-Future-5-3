@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方案 C · 编辑网格</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <style>
+    :root {
+      --bg: #f3f1ec; --ink: #111; --soft: #6b6b6b; --accent: #2b3cff; --line: #111;
+      --title: "Fraunces", "Noto Serif SC", "Songti SC", serif;
+      --zh: "Noto Serif SC", "Songti SC", serif;
+      --sans: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono: "Special Elite", "Courier New", monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg); font-family: var(--sans); line-height: 1.65; overflow-x: hidden; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 20px; width: calc(100% - 64px); margin: 0 auto; }
+    header { border-bottom: 2px solid var(--line); }
+    header .grid { padding: 16px 0; align-items: center; font-size: 13px; }
+    header b { grid-column: span 3; font-weight: 800; letter-spacing: .02em; }
+    header span { grid-column: span 3; color: var(--soft); }
+    header nav { grid-column: span 6; display: flex; justify-content: flex-end; gap: 22px; }
+    header nav a { color: var(--ink); text-decoration: none; }
+    header nav a.on { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
+    section { border-bottom: 2px solid var(--line); }
+
+    .hero .grid { min-height: 86vh; padding: 40px 0; align-content: space-between; row-gap: 40px; }
+    .hero .tag { grid-column: 1 / 4; font-family: var(--mono); font-size: 12px; }
+    .hero .tag2 { grid-column: 10 / 13; font-family: var(--mono); font-size: 12px; text-align: right; }
+    .hero h1 { grid-column: 1 / 13; margin: 0; font-family: var(--zh); font-weight: 700; font-size: clamp(64px, 11vw, 176px); line-height: .98; letter-spacing: -.02em; }
+    .hero h1 span { color: var(--accent); }
+    .hero .sub { grid-column: 1 / 6; font-size: 20px; }
+    .hero .meta { grid-column: 8 / 13; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--line); }
+    .hero .meta div { padding: 12px 0; font-size: 13px; color: var(--soft); }
+    .hero .meta b { display: block; font-family: var(--title); font-weight: 500; font-size: 40px; color: var(--ink); line-height: 1.1; }
+
+    .sec .grid { padding: 72px 0; row-gap: 32px; }
+    .sec .no { grid-column: 1 / 3; font-family: var(--title); font-size: 120px; line-height: .8; }
+    .sec .ttl { grid-column: 3 / 9; }
+    .sec .ttl h2 { margin: 0; font-family: var(--zh); font-size: clamp(36px, 4.4vw, 64px); line-height: 1.1; }
+    .sec .ttl p { margin: 12px 0 0; color: var(--soft); font-size: 18px; }
+
+    .switches { grid-column: 1 / 5; display: grid; border-top: 2px solid var(--line); }
+    .sw { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+    .sw b { font-size: 26px; font-weight: 800; } .sw small { display: block; color: var(--soft); font-size: 14px; }
+    .sw .state { font-family: var(--mono); font-size: 13px; padding: 4px 10px; border: 1.5px solid var(--ink); }
+    .sw.on .state { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .browser { grid-column: 6 / 13; border: 2px solid var(--line); background: #fff; }
+    .bar { padding: 10px 14px; border-bottom: 2px solid var(--line); font-family: var(--mono); font-size: 12px; }
+    .demo { padding: 40px; min-height: 320px; }
+    .demo.styled h4 { margin: 0; font-family: var(--zh); font-size: 52px; line-height: 1.1; }
+    .demo.styled p { font-size: 18px; color: var(--soft); border-top: 2px solid var(--ink); padding-top: 12px; margin-top: 16px; }
+    .demo.styled .tags span { display: inline-block; margin: 0 6px 6px 0; padding: 2px 10px; border: 1.5px solid var(--ink); font-size: 14px; }
+    .demo.styled button { margin-top: 14px; padding: 12px 22px; border: 0; background: var(--accent); color: #fff; font: inherit; font-weight: 700; }
+    .demo:not(.styled), .demo:not(.styled) * { all: revert; font-family: "Times New Roman", serif; }
+
+    .rules { grid-column: 1 / 13; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--line); }
+    .rule { padding: 22px 20px 30px 0; border-right: 1px solid var(--line); }
+    .rule + .rule { padding-left: 20px; }
+    .rule:last-child { border-right: 0; }
+    .rule .n { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+    .rule h5 { margin: 40px 0 8px; font-family: var(--zh); font-size: 26px; }
+    .rule p { margin: 0; color: var(--soft); }
+    .rule:hover { background: var(--accent); color: #fff; } .rule:hover p, .rule:hover .n { color: #dfe3ff; }
+
+    @media (max-width: 900px) {
+      .grid { width: calc(100% - 32px); grid-template-columns: 1fr; }
+      .grid > * { grid-column: 1 / -1 !important; }
+      header nav, header span { display: none; }
+      .hero .tag2 { text-align: left; }
+      .sec .no { font-size: 72px; }
+      .rules { grid-template-columns: 1fr; } .rule, .rule + .rule { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .rule h5 { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header><div class="grid"><b>AI &amp; FUTURE — 5/3</b><span>人工智能与未来 · 通识课</span>
+    <nav><a class="on" href="#">职业之书</a><a href="#">个人网站</a><a href="#">三件套</a><a href="#">设计原则</a><a href="#">工作台</a><a href="#">实践</a></nav></div></header>
+
+  <section class="hero"><div class="grid">
+    <span class="tag">CHAPTER 05 / LESSON 03</span><span class="tag2">AUTUMN 2026</span>
+    <h1>网站构建<br>从内容到<br><span>数字呈现</span></h1>
+    <p class="sub">先找到你想走的路，再把它变成一个别人愿意点开、读完、记住的网页。</p>
+    <div class="meta"><div><b>18</b>道职业测试题</div><div><b>5</b>条设计原则</div><div><b>30′</b>动手实践</div></div>
+  </div></section>
+
+  <section class="sec"><div class="grid">
+    <span class="no">03</span>
+    <div class="ttl"><h2>网页由什么构成？</h2><p>打开开关，看看每一层负责什么。</p></div>
+    <div class="switches">
+      <div class="sw on"><div><b>HTML</b><small>骨架：页面里有什么</small></div><span class="state">ON</span></div>
+      <div class="sw on" id="cssSw"><div><b>CSS</b><small>衣服：页面长什么样</small></div><span class="state">ON</span></div>
+      <div class="sw on"><div><b>JavaScript</b><small>机关：页面能做什么</small></div><span class="state">ON</span></div>
+    </div>
+    <div class="browser">
+      <div class="bar">my-website.html</div>
+      <div class="demo styled" id="demo">
+        <h4>小林的个人网站</h4>
+        <p>数据分析方向 · 喜欢把复杂的事情讲清楚</p>
+        <div class="tags"><span>Excel</span><span>Python</span><span>调研</span></div>
+        <button>了解更多</button>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="grid">
+    <span class="no">04</span>
+    <div class="ttl"><h2>五条设计原则</h2><p>AI 负责生成，人负责判断。</p></div>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><h5>视觉定位</h5><p>先想好气质，再动手。风格就是第一印象。</p></div>
+      <div class="rule"><span class="n">02</span><h5>信息层级</h5><p>3 秒内，让别人看懂你是谁。</p></div>
+      <div class="rule"><span class="n">03</span><h5>用户路径</h5><p>我是谁 → 擅长什么 → 做过什么 → 怎么找我。</p></div>
+      <div class="rule"><span class="n">04</span><h5>视觉统一</h5><p>颜色不超过 3 种，字体不超过 2 种。</p></div>
+      <div class="rule"><span class="n">05</span><h5>留白对齐</h5><p>信息越多，越需要留白和对齐。</p></div>
+    </div>
+  </div></section>
+  <script>
+    document.querySelectorAll(".sw").forEach((s) => s.addEventListener("click", () => {
+      s.classList.toggle("on");
+      const st = s.querySelector(".state"); if (st) st.textContent = s.classList.contains("on") ? "ON" : "OFF";
+      if (s.id === "cssSw") document.getElementById("demo").classList.toggle("styled", s.classList.contains("on"));
+    }));
+  </script>
+</body>
+</html>

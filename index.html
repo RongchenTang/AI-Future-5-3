@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网站构建 · 人工智能与未来 5-3</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="side">
+    <a class="side-brand" href="#s-cover">
+      <b>Web<i>Design</i></b>
+      <span class="type">CHAPTER 05 · 03<br>人工智能与未来</span>
+    </a>
+    <nav class="side-nav" id="sideNav" aria-label="课件目录"></nav>
+    <p class="side-keys type">← → 翻页<br>也可以直接滚动</p>
+  </aside>
+
+  <header class="topbar">
+    <b>Web <i>Design</i> · 5-3</b>
+    <span id="topPos" class="type"></span>
+  </header>
+
+  <main id="deck">
+
+    <!-- ============ 封面 ============ -->
+    <section class="screen hero" id="s-cover" data-title="封面" data-no="">
+      <div class="hero-copy">
+        <p class="kicker type">CHAPTER 05 · LESSON 03 · 2026</p>
+        <h1>网站构建：<br>从内容到<br><em>数字呈现</em></h1>
+        <p class="lead">先找到你想走的路，再把它变成一个别人愿意点开、读完、记住的网页。</p>
+        <button class="pill-btn" type="button" data-next>翻开今天的文件夹 →</button>
+      </div>
+      <div class="hero-stack" aria-hidden="true">
+        <div class="hs-card red"></div>
+        <div class="hs-card yellow"><b>Make it<br><i>yours</i></b><div class="stamp">LESSON<b>5-3</b></div></div>
+        <div class="hs-card ticket">
+          <p class="type">TODAY'S TASK</p>
+          <dl><dt class="type">STEP 01</dt><dd>翻开职业之书</dd><dt class="type">STEP 02</dt><dd>看懂一个网页</dd><dt class="type">STEP 03</dt><dd>做出你的网站</dd></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 00 文件夹目录 ============ -->
+    <section class="screen folder-screen" id="s-folder" data-title="今日目录" data-no="00">
+      <div class="sec-head center">
+        <span class="no">00</span>
+        <div><h2>今天的文件夹里有什么？</h2><p>点文件夹打开 · 点任意一页跳到那一节 · 可以拖动旋转</p></div>
+      </div>
+      <div class="folder-scene" id="folderScene"><div class="rig" id="rig"></div></div>
+    </section>
+
+    <!-- ============ 01 职业之书 ============ -->
+    <section class="screen" id="s-book" data-title="职业之书" data-no="01">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <div><h2>先翻开一本书，找找你想走的路</h2><p>18 道生活小场景 · 3 分钟 · 没有对错</p></div>
+      </div>
+      <div class="book-grid">
+        <div class="qr-card">
+          <div class="tape"></div>
+          <img src="assets/test-qr.svg" alt="职业之书测试二维码">
+          <p class="type">SCAN ME</p>
+          <a href="test/" target="_blank" rel="noopener">或点这里在新窗口打开 ↗</a>
+        </div>
+        <div class="book-steps">
+          <div class="step"><b>1</b><div><h3>扫码，翻开职业之书</h3><p>凭第一反应选。点错了可以打开「目录」回去改。</p></div></div>
+          <div class="step"><b>2</b><div><h3>收下你的鉴定书</h3><p>看看你的主类型和副类型，以及可以去试试的方向。</p></div></div>
+          <div class="step"><b>3</b><div><h3>保存那张票根</h3><p>票根上写着「你的网站可以长这样」，还有一段提示词，第二节课会用到。</p></div></div>
+          <div class="note">课堂小调查：举手看看，全班哪种类型的人最多？</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 网站案例 ============ -->
+    <section class="screen" id="s-cases" data-title="网站案例" data-no="02">
+      <div class="sec-head">
+        <span class="no">02</span>
+        <div><h2>简历让你被筛选，网站让你被记住</h2><p>边看边想：第一眼你看到了什么？它是怎么让你记住这个人的？</p></div>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <span class="case-no">01</span><span class="tag type">PRODUCT DESIGNER</span>
+          <h3>Sara Youssry</h3>
+          <p>用空间感、插画物件和模块入口组织个人经历，像走进一间有性格的作品房间。</p>
+          <p class="look">看点：<b>风格就是第一印象</b></p>
+          <a href="https://sarayoussry.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">02</span><span class="tag type">CREATIVE DEVELOPER</span>
+          <h3>Wodniack</h3>
+          <p>开发者作品集，用动效和排版把技术能力变得"看得见"。</p>
+          <p class="look">看点：<b>技术也可以很好看</b></p>
+          <a href="https://wodniack.dev/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">03</span><span class="tag type">3D · PLAYFUL</span>
+          <h3>Bruno Simon</h3>
+          <p>整个网站是一个 3D 小游戏，开着小车逛他的作品。（加载较慢，课前先打开）</p>
+          <p class="look">看点：<b>想象力可以有多大</b></p>
+          <a href="https://bruno-simon.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">04</span><span class="tag type">ENGINEER · CLEAN</span>
+          <h3>Brittany Chiang</h3>
+          <p>克制的单页：左边固定"我是谁"，右边滚动经历和项目，层级非常清楚。</p>
+          <p class="look">看点：<b>不花哨也能很专业</b></p>
+          <a href="https://brittanychiang.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">05</span><span class="tag type">AI CREATOR · OS</span>
+          <h3>不二 · Esther</h3>
+          <p>建筑跨界 AI 的创作者，把网站做成一台电脑「esther OS」：图标是作品，点开是窗口。</p>
+          <p class="look">看点：<b>网站本身就是作品</b></p>
+          <a href="https://hiesther.me/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case ask">
+          <h3>观察三问</h3>
+          <ol>
+            <li>第一眼你看到了什么？</li>
+            <li>它的整体风格是什么？</li>
+            <li>它如何组织个人信息、能力和作品？</li>
+          </ol>
+          <p class="note">如果是你，你更想做哪一种？</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 03-1 开关实验 ============ -->
+    <section class="screen" id="s-lab1" data-title="三件套 · 开关实验" data-no="03" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>网页由什么构成？</h2><p>实验 ① 开关实验：打开、关掉每一层，看看它负责什么。</p></div>
+      </div>
+      <div class="lab">
+        <div class="switches">
+          <button class="sw on" type="button" data-layer="html">
+            <span class="sw-top"><span><b>HTML</b><small>骨架 · 页面里<em>有什么</em></small></span><i class="knob"></i></span>
+            <code class="sw-code">&lt;h1&gt;小林的个人网站&lt;/h1&gt;
+&lt;p&gt;数据分析方向……&lt;/p&gt;
+&lt;button&gt;了解更多&lt;/button&gt;</code>
+          </button>
+          <button class="sw on" type="button" data-layer="css">
+            <span class="sw-top"><span><b>CSS</b><small>衣服 · 页面<em>长什么样</em></small></span><i class="knob"></i></span>
+            <code class="sw-code">h1 { color: #c4583a; }
+button { background: #26221e;
+         border-radius: 99px; }</code>
+          </button>
+          <button class="sw on" type="button" data-layer="js">
+            <span class="sw-top"><span><b>JavaScript</b><small>机关 · 页面<em>能做什么</em></small></span><i class="knob"></i></span>
+            <code class="sw-code">button.onclick = () =&gt; {
+  打个招呼();
+};</code>
+          </button>
+        </div>
+        <div class="lab-right">
+          <div class="browser" id="lab1Browser">
+            <div class="bar"><i></i><i></i><i></i><span class="type">index.html</span></div>
+            <div class="demo styled" id="lab1Demo">
+              <h4>小林的个人网站</h4>
+              <p>数据分析方向 · 喜欢把复杂的事情讲清楚</p>
+              <div class="tags"><span>Excel</span><span>Python</span><span>调研</span></div>
+              <button type="button" id="lab1Btn">了解更多</button>
+            </div>
+            <div class="demo-empty">（没有 HTML，就什么都没有）</div>
+          </div>
+          <div class="files">
+            <div class="file main"><b>index.html</b><code>&lt;link href="style.css"&gt;<br>&lt;script src="script.js"&gt;</code></div>
+            <span class="arrow">→</span>
+            <div class="file"><b>style.css</b><small>衣服</small></div>
+            <div class="file"><b>script.js</b><small>机关</small></div>
+          </div>
+          <p class="aside-note">HTML 文件用这两行把另外两个文件「拉」进来。今天这份课件，也是这样三个文件组成的。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03-2 点哪里看代码 ============ -->
+    <section class="screen" id="s-lab2" data-title="三件套 · 点哪看代码" data-no="03" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>页面上的每样东西，都是一行代码</h2><p>实验 ② 鼠标指向（或点一下）左边网页的任何部分，看看它对应哪几行代码。</p></div>
+      </div>
+      <div class="lab2">
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="type">index.html</span></div>
+          <div class="xl" id="lab2Site">
+            <div class="xl-hero" data-part="hero">
+              <div class="xl-avatar" data-part="avatar">林</div>
+              <div>
+                <h4 data-part="name">小林</h4>
+                <p data-part="tagline">数据分析方向 · 喜欢把复杂的事情讲清楚</p>
+              </div>
+            </div>
+            <div class="xl-tags" data-part="tags"><span>Excel</span><span>Python</span><span>调研</span></div>
+            <div class="xl-card" data-part="card">
+              <div class="xl-img" data-part="img">图片</div>
+              <div><b>校园外卖数据分析</b><small>课程项目 · 用 Python 分析 2000 条订单</small></div>
+            </div>
+            <button type="button" class="xl-btn" data-part="btn">给我写信</button>
+          </div>
+        </div>
+        <div class="code-panel">
+          <p class="type cp-label">index.html · 结构</p>
+          <pre class="code" id="lab2Html"></pre>
+          <p class="type cp-label">style.css · 样式</p>
+          <pre class="code" id="lab2Css"></pre>
+          <p class="cp-hint" id="lab2Hint">指向左边网页的任意部分 ←</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03-3 动手改一改 ============ -->
+    <section class="screen" id="s-lab3" data-title="三件套 · 动手改一改" data-no="03" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>你跟 AI 说「标题再大一点」，<br>AI 做的就是改这一行</h2><p>实验 ③ 拖动滑块、换颜色，看看网页和 CSS 一起变化。</p></div>
+      </div>
+      <div class="lab3">
+        <div class="controls">
+          <div class="ctl"><label>主色</label><div class="swatches" id="ctlColor"></div></div>
+          <div class="ctl"><label>标题字号 <output id="outSize">36px</output></label><input type="range" id="ctlSize" min="20" max="64" value="36"></div>
+          <div class="ctl"><label>圆角 <output id="outRadius">12px</output></label><input type="range" id="ctlRadius" min="0" max="36" value="12"></div>
+          <div class="ctl"><label>留白 <output id="outGap">24px</output></label><input type="range" id="ctlGap" min="4" max="48" value="24"></div>
+          <div class="ctl"><label>标题字体</label>
+            <div class="seg" id="ctlFont">
+              <button type="button" class="on" data-font="serif">宋体</button>
+              <button type="button" data-font="hand">楷体</button>
+              <button type="button" data-font="sans">黑体</button>
+            </div>
+          </div>
+        </div>
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="type">index.html</span></div>
+          <div class="xl live" id="lab3Site">
+            <div class="xl-hero">
+              <div class="xl-avatar">林</div>
+              <div><h4>小林</h4><p>数据分析方向 · 喜欢把复杂的事情讲清楚</p></div>
+            </div>
+            <div class="xl-tags"><span>Excel</span><span>Python</span><span>调研</span></div>
+            <div class="xl-card"><div class="xl-img">图片</div><div><b>校园外卖数据分析</b><small>课程项目 · 用 Python 分析 2000 条订单</small></div></div>
+            <button type="button" class="xl-btn">给我写信</button>
+          </div>
+        </div>
+        <pre class="code live-css" id="lab3Css"></pre>
+      </div>
+    </section>
+
+    <!-- ============ 03-4 F12 ============ -->
+    <section class="screen" id="s-lab4" data-title="三件套 · F12 魔法" data-no="03" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>魔法时刻：按下 F12</h2><p>实验 ④ 任何网站都是一份代码，你可以在自己的浏览器里「改写」它。</p></div>
+      </div>
+      <div class="f12">
+        <ol class="f12-steps">
+          <li><b>1</b><div><h3>打开任意一个网站</h3><p>比如学校官网，或者刚才的案例网站。</p></div></li>
+          <li><b>2</b><div><h3>按 F12</h3><p>笔记本可能要按 Fn + F12；Mac 按 ⌥ + ⌘ + I。右侧会出现开发者工具。</p></div></li>
+          <li><b>3</b><div><h3>点左上角的小箭头 ⬉</h3><p>它叫「选择元素」。</p></div></li>
+          <li><b>4</b><div><h3>点页面上的一段文字</h3><p>右边会高亮显示这段文字对应的那一行 HTML。</p></div></li>
+          <li><b>5</b><div><h3>双击那一行，改成你的名字</h3><p>回车。页面上的字变了！</p></div></li>
+        </ol>
+        <div class="f12-side">
+          <div class="try-card">
+            <p class="type">TRY IT HERE</p>
+            <p class="try-text" id="tryText">我是一段可以被你改写的文字。</p>
+            <small>用 F12 把上面这句话改成你的名字试试。</small>
+          </div>
+          <div class="note">放心：你只改了<b>自己浏览器里</b>的样子，别人看不到。刷新一下，一切恢复原样。</div>
+          <p class="aside-note">彩蛋：按 Ctrl + U（Mac：⌥ + ⌘ + U）可以直接看到整个网页的源代码。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03-5 小测 ============ -->
+    <section class="screen" id="s-quiz" data-title="三件套 · 猜猜是哪层" data-no="03" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>猜猜是哪一层？</h2><p>快问快答：下面这些变化，是改了 HTML、CSS 还是 JavaScript？</p></div>
+      </div>
+      <div class="quiz" id="quiz"></div>
+      <p class="quiz-score" id="quizScore"></p>
+    </section>
+
+    <!-- ============ 课间 ============ -->
+    <section class="screen" id="s-break" data-title="课间 · 素材准备" data-no="☕">
+      <div class="sec-head">
+        <span class="no">☕</span>
+        <div><h2>课间 15 分钟：把材料先备好</h2><p>自愿完成。做了的同学，第二节课可以直接开始做网页。</p></div>
+      </div>
+      <div class="break-grid">
+        <div class="checklist" id="breakList">
+          <label><input type="checkbox"><span><b>一张 IP 形象图</b>可以当作网站头像，代替真人照片</span></label>
+          <label><input type="checkbox"><span><b>一句个人宣言</b>一句话说清楚你是谁、想做什么</span></label>
+          <label><input type="checkbox"><span><b>3–5 个能力关键词</b>可以参考职业之书的鉴定书</span></label>
+          <label><input type="checkbox"><span><b>至少 3 个项目</b>获过的奖、做过的课程项目、个人作品，每个配 1 张图</span></label>
+          <label><input type="checkbox"><span><b>一个邮箱</b>网站上只放邮箱，不放手机号</span></label>
+          <label><input type="checkbox"><span><b>测试票根上的提示词</b>「你的网站可以长这样」那一段</span></label>
+        </div>
+        <div class="folder-tree">
+          <p class="type">BUILD THIS FOLDER</p>
+          <pre>📁 我的网站/
+   📄 index.html
+   📁 images/
+      🖼 avatar.png
+      🖼 project1.jpg
+      🖼 project2.jpg
+      🖼 project3.jpg</pre>
+          <div class="note">图片文件名用<b>英文或数字</b>，不要有空格和中文。<br>下周部署上线时，你会感谢现在的自己。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 设计原则 ============ -->
+    <section class="screen" id="s-rules" data-title="五条设计原则" data-no="04">
+      <div class="sec-head">
+        <span class="no">04</span>
+        <div><h2>做好网页的五条原则</h2><p>AI 负责生成，人负责判断。判断的依据，就是这五条。</p></div>
+      </div>
+      <div class="rule-tabs" id="ruleTabs" role="tablist"></div>
+      <div class="rule-body">
+        <div class="rule-text" id="ruleText"></div>
+        <div class="rule-demo">
+          <div class="rule-controls" id="ruleControls"></div>
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span class="type">小林的个人网站</span></div>
+            <div class="rd-stage" id="ruleStage"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05-1 提示词工作台 ============ -->
+    <section class="screen" id="s-studio" data-title="提示词工作台" data-no="05" data-group="提示词">
+      <div class="sec-head">
+        <span class="no">05</span>
+        <div><h2>提示词工作台</h2><p>把你的材料填进去，五条设计原则会自动写进提示词。填完一键复制，交给 AI。</p></div>
+      </div>
+      <div class="studio">
+        <form class="studio-form" id="studioForm" autocomplete="off">
+          <div class="f-row">
+            <label>昵称 / 姓名<input name="name" placeholder="例：小林"></label>
+            <label>专业年级<input name="major" placeholder="例：软件工程 2024 级"></label>
+          </div>
+          <label>一句话定位<input name="slogan" placeholder="例：喜欢把复杂的事情讲清楚的数据分析新人"></label>
+          <label>网站定位（粘贴职业之书票根上的提示词）<textarea name="style" rows="2" placeholder="例：我的职业倾向主类型是「研究型」……整体风格为理性清晰风……"></textarea></label>
+          <div class="f-row">
+            <label>能力标签（3–5 个，用顿号隔开）<input name="skills" placeholder="例：数据分析、Python、调研"></label>
+            <label>邮箱<input name="email" placeholder="例：xiaolin@example.com"></label>
+          </div>
+          <div class="f-row three">
+            <label>项目 1<textarea name="p1" rows="3" placeholder="项目名 + 做了什么 + 用了什么 + 结果。例：个人 IP 形象「小林酱」……"></textarea></label>
+            <label>项目 2<textarea name="p2" rows="3" placeholder="获过的奖、课程项目、个人作品都可以"></textarea></label>
+            <label>项目 3<textarea name="p3" rows="3" placeholder="不够三个？课后用「能力盘点」挖一挖"></textarea></label>
+          </div>
+          <div class="f-row">
+            <label>图片交互
+              <select name="interact">
+                <option>鼠标悬停时图片放大</option>
+                <option>点击图片查看大图</option>
+                <option>作品图片轮播</option>
+                <option>作品按类别切换</option>
+              </select>
+            </label>
+            <label>特别的创意（可选）<input name="idea" placeholder="例：做成一座花园，走到尽头才发现主人是谁"></label>
+          </div>
+        </form>
+        <div class="studio-out">
+          <div class="out-head"><p class="type">YOUR PROMPT</p><button class="ink-btn" type="button" id="copyPrompt">复制提示词</button></div>
+          <pre class="prompt-out" id="promptOut"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05-2 项目卡片 & 修改指令 ============ -->
+    <section class="screen" id="s-cards" data-title="项目卡片 · 修改指令" data-no="05" data-group="提示词">
+      <div class="sec-head">
+        <span class="no">05</span>
+        <div><h2>一段话，变成一张卡片</h2><p>网页不是把文字搬上去，而是重新组织：标题、图片、标签、一句话。</p></div>
+      </div>
+      <div class="cards-grid">
+        <div class="vs">
+          <div class="vs-before">
+            <p class="type">BEFORE · 一段话</p>
+            <p>本学期完成了个人 IP 形象设计，使用 AI 工具生成了形象和周边，并做了展示。</p>
+          </div>
+          <span class="vs-arrow">→</span>
+          <div class="vs-after">
+            <p class="type">AFTER · 项目卡片</p>
+            <div class="pcard">
+              <div class="pcard-img"><span>小林酱</span></div>
+              <div class="pcard-body">
+                <b>「小林酱」个人 IP 形象</b>
+                <p>把「爱熬夜的数据控」变成一个角色。</p>
+                <div class="pcard-tags"><span>AIGC</span><span>角色设计</span><span>品牌</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fixes">
+          <p class="type">做完不满意？复制一句，继续对 AI 说</p>
+          <div class="fix-list" id="fixList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05-3 能力盘点 ============ -->
+    <section class="screen" id="s-dig" data-title="能力盘点（课后）" data-no="05" data-group="提示词">
+      <div class="sec-head">
+        <span class="no">05</span>
+        <div><h2>项目不够三个？先挖一挖</h2><p>课后可选。把这段提示词交给任意 AI，它会像教练一样一问一答，帮你把经历挖出来。</p></div>
+      </div>
+      <div class="dig">
+        <div class="dig-left">
+          <div class="step"><b>1</b><div><h3>复制提示词，发给 AI</h3><p>豆包、Kimi、DeepSeek 都可以。</p></div></div>
+          <div class="step"><b>2</b><div><h3>认真回答它的追问</h3><p>它会一次问 1–2 个问题，从课程、竞赛、社团、作品……一路问下去。</p></div></div>
+          <div class="step"><b>3</b><div><h3>拿到 3–5 张项目卡片</h3><p>确认每一条都是真的，【待补充】的地方自己补上，再粘贴进工作台。</p></div></div>
+          <div class="note">AI 可以帮你<b>想起来</b>、帮你<b>说清楚</b>，但不能帮你<b>编出来</b>。</div>
+          <p class="aside-note">彩蛋：这段提示词也被打包成了一个 AI「技能」（<a href="https://github.com/RongchenTang/AI-Future-5-3/blob/main/skills/ability-inventory/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>）。第六章我们会讲：怎样把一段提示词变成 AI 的一项技能。</p>
+        </div>
+        <div class="dig-right">
+          <div class="out-head"><p class="type">ABILITY COACH PROMPT</p><button class="ink-btn" type="button" data-copy="digPrompt">复制提示词</button></div>
+          <pre class="prompt-out" id="digPrompt"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 动手实践 ============ -->
+    <section class="screen" id="s-make" data-title="动手实践 · 自查表" data-no="06">
+      <div class="sec-head">
+        <span class="no">06</span>
+        <div><h2>动手：做出你的网站初稿</h2><p>今天的目标是一个能在自己电脑上打开的初稿。课后继续完善，下周学部署。</p></div>
+      </div>
+      <div class="make">
+        <ol class="make-steps">
+          <li><b>1</b><span>建好文件夹：<code>index.html</code> + <code>images/</code></span></li>
+          <li><b>2</b><span>在工作台填好材料，复制提示词</span></li>
+          <li><b>3</b><span>交给 AI，把代码保存成 <code>index.html</code></span></li>
+          <li><b>4</b><span>双击用浏览器打开，看看效果</span></li>
+          <li><b>5</b><span>对照右边的自查表，用修改指令让 AI 继续改</span></li>
+        </ol>
+        <div class="checklist self" id="selfList">
+          <p class="type">SELF-CHECK · 生成后先别急着交</p>
+          <label><input type="checkbox"><span>视觉定位明确，符合我的方向</span></label>
+          <label><input type="checkbox"><span>3 秒内能看出这是什么网站、该往哪里看</span></label>
+          <label><input type="checkbox"><span>浏览顺序自然，一路看下去不迷路</span></label>
+          <label><input type="checkbox"><span>颜色不超过 3 种，字体不超过 2 种</span></label>
+          <label><input type="checkbox"><span>留白充足，元素对齐，不拥挤</span></label>
+          <label><input type="checkbox"><span>用卡片、标签、图片重新组织内容，不是文字堆砌</span></label>
+          <label><input type="checkbox"><span>图片都能显示，没有变形</span></label>
+          <label><input type="checkbox"><span>内容都是真的，没有 AI 编出来的经历</span></label>
+          <p class="self-count" id="selfCount">0 / 8</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07-1 作业要求 ============ -->
+    <section class="screen" id="s-hw" data-title="作业要求" data-no="07" data-group="作业">
+      <div class="sec-head">
+        <span class="no">07</span>
+        <div><h2>两周后，交一个能点开的链接</h2><p>本周做初稿，下周学部署，下下周上课前提交：网站链接 + AI 使用说明。</p></div>
+      </div>
+      <div class="hw">
+        <div class="hw-col">
+          <h3>✦ 必备内容</h3>
+          <ol>
+            <li>网页里能<b>清楚找到</b>：昵称或姓名、专业年级、邮箱<small>放在哪、怎么呈现由你决定，但要醒目、找得到</small></li>
+            <li>关于我：背景、兴趣、想发展的方向</li>
+            <li>能力标签 3–5 个</li>
+            <li><b>至少 3 个项目</b><small>获奖、课程项目、个人作品；每个有标题、图片、2–3 句说明、标签</small></li>
+            <li>至少 1 种图片交互<small>悬停放大 / 点击看大图 / 轮播 / 分类切换</small></li>
+          </ol>
+        </div>
+        <div class="hw-col">
+          <h3>✦ 技术要求</h3>
+          <ul>
+            <li>链接能直接打开，手机上也能正常看</li>
+            <li>图片全部能显示、不变形，用相对路径 <code>images/xxx.jpg</code></li>
+            <li>浏览器标签页的标题是你的名字或昵称</li>
+          </ul>
+          <h3>✦ 加分</h3>
+          <ul><li>写得好的 README，或清楚的网站使用指引</li></ul>
+          <h3>✦ 推荐</h3>
+          <ul><li>页脚加一句：「本网站在 AI 辅助下完成，内容均为本人真实经历」</li></ul>
+        </div>
+        <div class="hw-col line">
+          <h3>✦ 底线</h3>
+          <div class="bottom-line"><b>内容真实</b>AI 可以润色，不能编造经历、奖项和数据。</div>
+          <div class="bottom-line"><b>保护隐私</b>只放邮箱，不放手机号、学号、地址；头像用 IP 形象代替真人照片。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07-2 AI 使用说明 ============ -->
+    <section class="screen" id="s-report" data-title="AI 使用说明" data-no="07" data-group="作业">
+      <div class="sec-head">
+        <span class="no">07</span>
+        <div><h2>AI 使用说明（必交）</h2><p>和网站链接一起提交。说清楚哪些是你的，哪些是 AI 的——这是用 AI 的基本修养。</p></div>
+      </div>
+      <div class="report">
+        <div class="report-row"><b>使用的 AI 工具</b><span>生成网页用了什么？生成图片用了什么？</span></div>
+        <div class="report-row"><b>迭代过程</b><span>改了几轮？每一轮主要改了什么？</span></div>
+        <div class="report-row"><b>最重要的提示词</b><span>原文照贴一条你觉得最关键的提示词。</span></div>
+        <div class="report-row"><b>最满意的地方</b><span>哪里？为什么？</span></div>
+        <div class="report-row hl"><b>内容来源对照表</b><span>逐项标出：哪些是我的真实经历、我自己写的；哪些是 AI 生成或润色的。图片来自哪里：AI 生成 / 自己拍摄 / 网络（网络图片注明出处）。</span></div>
+        <div class="report-row hl"><b>我做出的判断</b><span>AI 给的结果里，我改掉或拒绝了什么？为什么？</span></div>
+      </div>
+      <p class="aside-note center">这份说明也是期末作业的一次预演。</p>
+    </section>
+
+    <!-- ============ 08 总结 ============ -->
+    <section class="screen final" id="s-end" data-title="总结" data-no="08">
+      <div class="sec-head">
+        <span class="no">08</span>
+        <div><h2>今天，从内容走到了网页</h2><p>下一站：让全世界都能打开它。</p></div>
+      </div>
+      <div class="recap">
+        <div class="recap-card"><span>01</span><h3>认识自己</h3><p>翻开职业之书，找到想走的路</p></div>
+        <div class="recap-card"><span>02</span><h3>看懂网页</h3><p>HTML 骨架 · CSS 衣服 · JS 机关</p></div>
+        <div class="recap-card"><span>03</span><h3>用原则判断</h3><p>定位 · 层级 · 路径 · 统一 · 留白</p></div>
+        <div class="recap-card"><span>04</span><h3>让 AI 生成</h3><p>写清楚提示词，再一轮轮修改</p></div>
+      </div>
+      <div class="next-up">
+        <div class="ticket-mini"><p class="type">NEXT WEEK</p><b>部署上线</b><small>把网页发布出去，得到你的专属链接</small></div>
+        <div class="ticket-mini"><p class="type">CHAPTER 06</p><b>AI 工作流 · Vibe Coding · 调试与智能体</b><small>从做一个网页，走向做一个应用</small></div>
+      </div>
+      <p class="closing">AI 可以帮助我们生成网页，<br>但真正决定网页质量的，是人的<em>结构意识</em>、<em>审美判断</em>和<em>迭代能力</em>。</p>
+    </section>
+
+  </main>
+
+  <div class="turn" id="turn" aria-hidden="true"><div class="turn-sheet"><span class="type" id="turnNo"></span><b id="turnTitle"></b></div></div>
+  <div class="pager">
+    <button type="button" id="prevBtn" aria-label="上一节">←</button>
+    <span id="pagerPos" class="type"></span>
+    <button type="button" id="nextBtn" aria-label="下一节">→</button>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/deck.js"></script>
+  <script src="js/lab.js"></script>
+  <script src="js/studio.js"></script>
+</body>
+</html>

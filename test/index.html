@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>职业倾向小测试</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- 开始页 -->
+    <section id="screen-intro" class="screen is-active">
+      <p class="eyebrow">人工智能与未来 · 5-3 网站构建</p>
+      <h1>你更适合<br>做什么样的工作？</h1>
+      <p class="lead">18 道生活小场景，凭第一反应选择。测完你会得到自己的职业倾向类型，以及一份「你的个人网站可以长这样」的建议。</p>
+      <ul class="intro-points">
+        <li><b>18</b><span>道题</span></li>
+        <li><b>3</b><span>分钟左右</span></li>
+        <li><b>6</b><span>种类型</span></li>
+      </ul>
+      <button class="btn primary" id="startBtn" type="button">开始测试</button>
+      <p class="fineprint">基于霍兰德职业兴趣理论（RIASEC）改编，用于课堂探索，不是职业诊断。没有对错，选最像你的那个就好。</p>
+    </section>
+
+    <!-- 答题页 -->
+    <section id="screen-quiz" class="screen">
+      <div class="quiz-top">
+        <button class="link-btn" id="prevBtn" type="button">← 上一题</button>
+        <span id="progressText">1 / 18</span>
+      </div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <h2 id="questionText"></h2>
+      <div id="options" class="options"></div>
+    </section>
+
+    <!-- 结果页 -->
+    <section id="screen-result" class="screen">
+      <div class="result-card" id="resultCard">
+        <p class="eyebrow">我的职业倾向</p>
+        <div class="combo">
+          <div class="combo-item main">
+            <small>主类型</small>
+            <strong id="mainName"></strong>
+            <em id="mainNick"></em>
+          </div>
+          <span class="combo-x">×</span>
+          <div class="combo-item">
+            <small>副类型</small>
+            <strong id="subName"></strong>
+            <em id="subNick"></em>
+          </div>
+        </div>
+        <p id="mainDesc" class="desc"></p>
+        <p id="subDesc" class="desc sub"></p>
+        <p id="tieNote" class="tie-note" hidden></p>
+
+        <h3>我的优势关键词</h3>
+        <div id="strengths" class="chips"></div>
+
+        <h3>可以探索的方向</h3>
+        <ul id="directions" class="directions"></ul>
+        <p class="fineprint">这不是标准答案，而是一个值得去试一试的方向。很多人的兴趣会随着经历而变化。</p>
+      </div>
+
+      <div class="result-card">
+        <p class="eyebrow">你的个人网站可以长这样</p>
+        <h3 id="siteStyle" class="site-style"></h3>
+        <div id="palette" class="palette"></div>
+        <dl class="site-info">
+          <dt>首屏重点</dt><dd id="siteHero"></dd>
+          <dt>推荐结构</dt><dd id="siteStructure"></dd>
+        </dl>
+      </div>
+
+      <div class="result-card">
+        <p class="eyebrow">我的网站定位提示词</p>
+        <p class="hint">复制下面这段，等会儿粘贴进网页生成提示词的「视觉定位」部分。</p>
+        <pre id="positionPrompt" class="prompt"></pre>
+        <button class="btn primary" id="copyBtn" type="button">复制提示词</button>
+      </div>
+
+      <div class="result-card">
+        <p class="eyebrow">六种类型得分</p>
+        <div id="scoreBars" class="bars"></div>
+      </div>
+
+      <button class="btn ghost" id="restartBtn" type="button">重新测试</button>
+    </section>
+
+  </main>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

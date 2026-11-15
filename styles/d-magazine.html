@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方案 D · 杂志教科书翻页</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <style>
+    :root {
+      --desk: #e9e5dd; --paper: #fbf8f2; --paper-2: #f5f0e6; --ink: #1f1c19; --soft: #6f685e;
+      --mustard: #f4bd3b; --terra: #c4583a; --stone: #d5d2c8; --blue: #2f4bd8; --rule: rgba(64,92,140,.12); --line: rgba(31,28,25,.16);
+      --hand: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+      --title: "Fraunces", "Noto Serif SC", "Songti SC", serif;
+      --zh: "Noto Serif SC", "Songti SC", serif;
+      --type: "Special Elite", "Courier New", monospace;
+      --W: min(1180px, 94vw);
+      --H: min(700px, calc(100vh - 140px));
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+    body { color: var(--ink); background: var(--desk); font-family: var(--hand); line-height: 1.7; }
+    .type { font-family: var(--type); letter-spacing: .08em; }
+
+    .stage { height: 100%; display: grid; place-items: center; padding-bottom: 50px; }
+    .book { position: relative; width: var(--W); height: var(--H); display: grid; grid-template-columns: 1fr 1fr; perspective: 2600px; }
+    .slot { position: relative; height: 100%; }
+    .slot.has { filter: drop-shadow(0 24px 34px rgba(50,35,20,.22)); }
+
+    .page { position: absolute; inset: 0; overflow: hidden; padding: 48px 50px 56px; background: var(--paper); }
+    .slot-l .page, .leaf .back { border-radius: 6px 0 0 6px; background: linear-gradient(90deg, transparent 86%, rgba(80,60,30,.13)), var(--paper-2); }
+    .slot-r .page, .leaf .front { border-radius: 0 6px 6px 0; background: linear-gradient(90deg, rgba(80,60,30,.14), transparent 12%), var(--paper); }
+    .pno { position: absolute; bottom: 20px; font-family: var(--type); font-size: 11px; color: var(--soft); }
+    .slot-l .pno, .back .pno { left: 50px; } .slot-r .pno, .front .pno { right: 50px; }
+    .runhead { position: absolute; top: 20px; left: 50px; right: 50px; display: flex; justify-content: space-between; font-family: var(--type); font-size: 10.5px; color: var(--soft); }
+
+    /* 教科书侧边索引 */
+    .thumbs { position: absolute; right: -34px; top: 40px; display: grid; gap: 6px; z-index: 6; }
+    .thumbs button { width: 34px; padding: 10px 0; writing-mode: vertical-rl; border: 0; border-radius: 0 6px 6px 0; font: 13px var(--hand);
+      color: var(--ink); background: var(--stone); cursor: pointer; letter-spacing: .1em; transition: transform .2s; }
+    .thumbs button:hover { transform: translateX(4px); }
+    .thumbs button.on { background: var(--mustard); }
+
+    /* 翻页 */
+    .leaf { position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; transform-origin: left center; transform-style: preserve-3d; z-index: 5; }
+    .leaf .page { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .leaf .back { transform: rotateY(180deg); }
+    .leaf.fwd { animation: fwd .9s cubic-bezier(.45,.05,.3,1) forwards; }
+    .leaf.bwd { animation: bwd .9s cubic-bezier(.45,.05,.3,1) forwards; }
+    @keyframes fwd { from { transform: rotateY(0); } to { transform: rotateY(-180deg); } }
+    @keyframes bwd { from { transform: rotateY(-180deg); } to { transform: rotateY(0); } }
+
+    .pager { position: fixed; left: 0; right: 0; bottom: 18px; display: flex; justify-content: center; align-items: center; gap: 18px; font-size: 14px; }
+    .pager button { padding: 6px 14px; background: none; border: 1px solid var(--ink); border-radius: 99px; font: inherit; cursor: pointer; }
+    .pager span { font-family: var(--type); font-size: 12px; color: var(--soft); min-width: 90px; text-align: center; }
+
+    /* ---------- 封面：时尚杂志 ---------- */
+    .cover { padding: 0 !important; border-radius: 0 6px 6px 0 !important; background: var(--mustard) !important; color: var(--ink); }
+    .cover .mast { position: absolute; top: 18px; left: 26px; right: 26px; font-family: var(--title); font-size: clamp(90px, 12vw, 168px); line-height: .82; letter-spacing: -.05em; }
+    .cover .issue { position: absolute; top: 28px; right: 28px; text-align: right; font-family: var(--type); font-size: 10.5px; line-height: 1.6; }
+    .cover .art { position: absolute; right: -60px; bottom: -40px; width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--terra); }
+    .cover .art::before { content: ""; position: absolute; left: 18%; top: 14%; width: 46%; aspect-ratio: 3/4; background: var(--paper); border-radius: 4px; transform: rotate(-8deg);
+      box-shadow: 0 20px 30px rgba(0,0,0,.18); background-image: linear-gradient(var(--ink) 0 0), linear-gradient(var(--stone) 0 0), linear-gradient(var(--stone) 0 0), linear-gradient(var(--mustard) 0 0);
+      background-size: 60% 9%, 80% 4%, 64% 4%, 40% 14%; background-position: 20% 18%, 20% 34%, 20% 42%, 20% 70%; background-repeat: no-repeat; }
+    .cover .lines { position: absolute; left: 26px; top: 46%; width: 46%; display: grid; gap: 16px; }
+    .cover .lines p { margin: 0; font-size: 15px; line-height: 1.4; }
+    .cover .lines b { display: block; font-family: var(--zh); font-size: 21px; }
+    .cover .big { position: absolute; left: 26px; bottom: 74px; font-family: var(--zh); font-size: clamp(30px, 3.4vw, 44px); line-height: 1.15; }
+    .cover .big em { font-family: var(--title); font-weight: 400; }
+    .cover .barcode { position: absolute; left: 26px; bottom: 22px; width: 92px; height: 34px;
+      background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px); }
+    .cover .open { position: absolute; right: 22px; bottom: 22px; padding: 8px 16px; background: var(--ink); color: var(--paper); border-radius: 99px; font-size: 13px; }
+    .desk-note { padding: 60px 40px; color: var(--soft); }
+    .desk-note h2 { margin: 0; font-family: var(--title); font-weight: 400; font-style: italic; font-size: 54px; color: var(--ink); line-height: 1; }
+    .desk-note p { max-width: 300px; }
+
+    /* ---------- 内页通用 ---------- */
+    .kicker { margin: 18px 0 10px; font-family: var(--type); font-size: 11px; color: var(--terra); letter-spacing: .12em; }
+    h2.h { margin: 0 0 18px; font-family: var(--zh); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.2; }
+    .lead { font-size: 18px; color: #3d3833; }
+    .dropcap::first-letter { float: left; font-family: var(--zh); font-size: 66px; line-height: .9; margin: 6px 10px 0 0; color: var(--terra); }
+
+    .toc { margin: 22px 0 0; padding: 0; list-style: none; }
+    .toc li { display: flex; align-items: baseline; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 18px; cursor: pointer; }
+    .toc li:hover { color: var(--terra); }
+    .toc b { font-family: var(--title); font-weight: 400; font-style: italic; font-size: 26px; width: 1.6em; color: var(--terra); }
+    .toc i { flex: 1; border-bottom: 1px dotted var(--soft); transform: translateY(-5px); }
+    .toc small { font-family: var(--type); font-size: 12px; }
+
+    .note { position: relative; margin-top: 18px; padding: 14px 16px 14px 18px; background: rgba(244,189,59,.35); font-size: 15.5px; }
+    .note::before { content: "课堂笔记"; display: block; font-family: var(--type); font-size: 10.5px; letter-spacing: .15em; color: var(--terra); }
+    .box { margin-top: 18px; padding: 16px 18px; border: 1.5px solid var(--ink); font-size: 15.5px; }
+    .box h4 { margin: 0 0 6px; font-family: var(--zh); font-size: 16px; }
+
+    .layers { display: grid; gap: 12px; margin-top: 14px; }
+    .layer { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .layer b { font-family: var(--title); font-size: 24px; font-weight: 500; }
+    .layer span { font-size: 16px; }
+    .layer em { font-style: normal; color: var(--terra); }
+
+    .lab-sw { display: flex; gap: 10px; margin: 6px 0 16px; flex-wrap: wrap; }
+    .lab-sw button { padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 99px; background: var(--ink); color: var(--paper); font: 15px var(--hand); cursor: pointer; }
+    .lab-sw button.off { background: transparent; color: var(--ink); text-decoration: line-through; }
+    .browser { border: 1.5px solid var(--ink); border-radius: 6px; overflow: hidden; background: #fff; }
+    .browser .bar { padding: 6px 12px; border-bottom: 1.5px solid var(--ink); font-family: var(--type); font-size: 11px; }
+    .demo { padding: 26px; min-height: 250px; }
+    .demo.styled { background: linear-gradient(135deg, #fff6e2, #fff); }
+    .demo.styled h4 { margin: 0; font-family: var(--zh); font-size: 32px; color: var(--terra); }
+    .demo.styled p { color: var(--soft); }
+    .demo.styled .tags span { display: inline-block; margin: 0 6px 6px 0; padding: 2px 12px; border: 1.5px solid var(--ink); border-radius: 99px; font-size: 14px; }
+    .demo.styled button { margin-top: 8px; padding: 9px 20px; border: 0; border-radius: 99px; background: var(--ink); color: #fff; font: inherit; }
+    .demo:not(.styled), .demo:not(.styled) * { all: revert; font-family: "Times New Roman", serif; }
+
+    .quote { font-family: var(--zh); font-size: clamp(34px, 3.8vw, 52px); line-height: 1.25; margin: 30px 0 0; }
+    .quote em { font-style: normal; color: var(--terra); }
+    .quote-src { margin-top: 16px; font-family: var(--type); font-size: 12px; color: var(--soft); }
+    .rules { margin: 12px 0 0; padding: 0; list-style: none; counter-reset: r; }
+    .rules li { display: grid; grid-template-columns: 52px 1fr; padding: 11px 0; border-bottom: 1px solid var(--line); counter-increment: r; }
+    .rules li::before { content: counter(r, lower-roman) "."; font-family: var(--title); font-style: italic; font-size: 26px; color: var(--terra); line-height: 1.2; }
+    .rules b { font-family: var(--zh); font-size: 19px; display: block; }
+    .rules span { font-size: 15.5px; color: var(--soft); }
+
+    @media (max-width: 860px) {
+      :root { --W: 92vw; --H: calc(100vh - 110px); }
+      .book { grid-template-columns: 1fr; }
+      .slot-l { display: none; }
+      .slot-r .page { border-radius: 6px; padding: 40px 22px 50px; overflow-y: auto; }
+      .leaf { left: 0; width: 100%; } .leaf .back { display: none; }
+      .leaf.fwd { animation-name: fwdM; } .leaf.bwd { animation-name: bwdM; }
+      .thumbs { display: none; }
+      .runhead { left: 22px; right: 22px; } .front .pno, .slot-r .pno { right: 22px; }
+      .cover .mast { font-size: 25vw; } .cover .lines { width: 60%; }
+    }
+    @keyframes fwdM { 0% { transform: rotateY(0); opacity: 1; } 75% { opacity: 1; } 100% { transform: rotateY(-115deg); opacity: 0; } }
+    @keyframes bwdM { 0% { transform: rotateY(-115deg); opacity: 0; } 25% { opacity: 1; } 100% { transform: rotateY(0); opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="book" id="book">
+      <div class="slot slot-l" id="L"></div>
+      <div class="slot slot-r" id="R"></div>
+      <nav class="thumbs" id="thumbs"></nav>
+    </div>
+  </div>
+  <div class="pager">
+    <button id="prev" type="button">← 上一页</button>
+    <span id="pos"></span>
+    <button id="next" type="button">下一页 →</button>
+  </div>
+
+  <script>
+    const RH = (l, r) => `<div class="runhead"><span>${l}</span><span>${r}</span></div>`;
+    // 每一页的内容。真正的课件里每一节会是几页。
+    const PAGES = [
+      { chap: 0, html: `
+        <div class="page cover">
+          <div class="mast">WEB<br>&amp;ME</div>
+          <div class="issue">ISSUE 05·03<br>AUTUMN 2026<br>人工智能与未来</div>
+          <div class="art"></div>
+          <div class="lines">
+            <p><b>18 道题</b>找到你可能想走的路</p>
+            <p><b>网页三件套</b>骨架、衣服和机关</p>
+            <p><b>3 秒法则</b>五条让网页变好看的原则</p>
+          </div>
+          <div class="big">网站构建：<br>从内容到<em>数字呈现</em></div>
+          <div class="barcode"></div>
+          <div class="open">翻开 →</div>
+        </div>` },
+      { chap: 0, html: `
+        ${RH("CONTENTS", "目录")}
+        <p class="kicker">IN THIS ISSUE</p>
+        <h2 class="h">本期目录</h2>
+        <ul class="toc">
+          <li data-go="1"><b>1</b>职业之书<i></i><small>P.04</small></li>
+          <li data-go="1"><b>2</b>为什么需要个人网站<i></i><small>P.06</small></li>
+          <li data-go="3"><b>3</b>网页三件套<i></i><small>P.08</small></li>
+          <li data-go="5"><b>4</b>五条设计原则<i></i><small>P.10</small></li>
+          <li data-go="5"><b>5</b>提示词工作台<i></i><small>P.12</small></li>
+          <li data-go="5"><b>6</b>动手实践<i></i><small>P.14</small></li>
+        </ul>` },
+      { chap: 0, html: `
+        ${RH("EDITOR'S LETTER", "卷首语")}
+        <p class="kicker">EDITOR'S LETTER</p>
+        <h2 class="h">简历让你被筛选，<br>网站让你被记住。</h2>
+        <p class="lead dropcap">这节课我们不把简历复制到网页里。我们先翻一本职业之书，看看自己想走哪条路；再学一点网页的基本构成和设计原则；最后，用自然语言请 AI 帮你做出第一个个人网站。</p>
+        <div class="note">你不需要会写代码。你需要的是：讲清楚想要什么，并判断 AI 做得好不好。</div>` },
+      { chap: 1, html: `
+        ${RH("CH.03 · 网页三件套", "")}
+        <p class="kicker">CHAPTER 03</p>
+        <h2 class="h">网页由什么构成？</h2>
+        <p class="lead">任何一个网页，都可以拆成三层。</p>
+        <div class="layers">
+          <div class="layer"><b>HTML</b><span>内容结构 · 页面里<em>有什么</em><br>就像房子的<em>骨架</em></span></div>
+          <div class="layer"><b>CSS</b><span>视觉样式 · 页面<em>长什么样</em><br>就像<em>衣服和装修</em></span></div>
+          <div class="layer"><b>JS</b><span>交互功能 · 页面<em>能做什么</em><br>就像<em>动作和机关</em></span></div>
+        </div>
+        <div class="box"><h4>知识点</h4>浏览器读到 HTML 文件，会顺着里面的链接把 CSS 和 JS 一起"拉"进来，三者合起来，才是你看到的页面。</div>` },
+      { chap: 1, html: `
+        ${RH("", "动手试一试")}
+        <p class="kicker">TRY IT</p>
+        <h2 class="h">关掉 CSS 会怎样？</h2>
+        <div class="lab-sw"><button type="button" data-sw="css">CSS 衣服</button><button type="button" data-sw="js">JS 机关</button></div>
+        <div class="browser"><div class="bar">my-website.html</div>
+          <div class="demo styled" id="demo"><h4>小林的个人网站</h4><p>数据分析方向 · 喜欢把复杂的事情讲清楚</p>
+          <div class="tags"><span>Excel</span><span>Python</span><span>调研</span></div><button type="button" id="demoBtn">了解更多</button></div></div>
+        <div class="note">按 F12，你可以"改写"任何一个网站——刷新后就会恢复。</div>` },
+      { chap: 2, html: `
+        ${RH("CH.04 · 设计原则", "")}
+        <p class="kicker">CHAPTER 04</p>
+        <p class="quote">网页设计的核心，<br>不是<em>堆材料</em>，<br>而是让人<em>3 秒</em><br>看懂你是谁。</p>
+        <p class="quote-src">— 本节课主旨</p>` },
+      { chap: 2, html: `
+        ${RH("", "五条原则")}
+        <p class="kicker">FIVE RULES</p>
+        <h2 class="h">五条设计原则</h2>
+        <ol class="rules">
+          <li><div><b>视觉定位</b><span>先想好气质，再动手。风格就是第一印象。</span></div></li>
+          <li><div><b>信息层级</b><span>重要的更大、更靠前、更醒目。</span></div></li>
+          <li><div><b>用户路径</b><span>我是谁 → 擅长什么 → 做过什么 → 怎么找我</span></div></li>
+          <li><div><b>视觉统一</b><span>颜色不超过 3 种，字体不超过 2 种。</span></div></li>
+          <li><div><b>留白对齐</b><span>信息越多，越需要留白和对齐。</span></div></li>
+        </ol>` }
+    ];
+    const CHAPS = ["导读", "三件套", "设计原则"];
+
+    const mobile = () => matchMedia("(max-width: 860px)").matches;
+    // 桌面：0 号为封面单页，之后两页一组；手机：一页一页
+    const spreads = () => mobile()
+      ? PAGES.map((_, i) => [null, i])
+      : [[null, 0], ...Array.from({ length: Math.ceil((PAGES.length - 1) / 2) }, (_, k) => [1 + k * 2, 2 + k * 2])];
+    let s = 0, busy = false;
+
+    const pageHTML = (i) => i == null || !PAGES[i] ? "" :
+      (i === 0 ? PAGES[0].html : `<div class="page">${PAGES[i].html}<span class="pno">— ${String(i + 1).padStart(2, "0")} —</span></div>`);
+    const inner = (i) => i == null || !PAGES[i] ? "" : (i === 0 ? PAGES[0].html.replace(/^\s*<div class="page cover">|<\/div>\s*$/g, "") : PAGES[i].html);
+
+    function paint() {
+      const [l, r] = spreads()[s];
+      L.innerHTML = pageHTML(l) || (s === 0 && !mobile() ? `<div class="desk-note"><h2>Issue<br>05·03</h2><p>点击封面或按 → 键，翻开这本课堂杂志。</p></div>` : "");
+      R.innerHTML = pageHTML(r);
+      L.classList.toggle("has", l != null); R.classList.toggle("has", r != null);
+      pos.textContent = `${s + 1} / ${spreads().length}`;
+      const chap = PAGES[r ?? l]?.chap ?? 0;
+      thumbs.innerHTML = CHAPS.map((c, k) => `<button type="button" data-chap="${k}" class="${k === chap ? "on" : ""}">${c}</button>`).join("");
+      wire();
+    }
+
+    function go(t) {
+      const sp = spreads();
+      if (busy || t < 0 || t >= sp.length || t === s) return;
+      busy = true;
+      const fwd = t > s, [cl, cr] = sp[s], [nl, nr] = sp[t];
+      const leaf = document.createElement("div");
+      leaf.className = "leaf " + (fwd ? "fwd" : "bwd");
+      const frontIdx = fwd ? cr : nr, backIdx = fwd ? nl : cl;
+      const frontCls = frontIdx === 0 ? "page cover front" : "page front";
+      leaf.innerHTML = `<div class="${frontCls}">${inner(frontIdx)}</div><div class="page back">${backIdx != null ? inner(backIdx) : ""}</div>`;
+      book.appendChild(leaf);
+      if (fwd) { R.innerHTML = pageHTML(nr); R.classList.toggle("has", nr != null); }
+      else { L.innerHTML = pageHTML(nl); L.classList.toggle("has", nl != null); }
+      s = t;
+      setTimeout(() => { leaf.remove(); paint(); busy = false; }, 900);
+    }
+
+    function wire() {
+      document.querySelectorAll("[data-go]").forEach((el) => el.onclick = () => go(spreads().findIndex(([a, b]) => a == el.dataset.go || b == el.dataset.go)));
+      document.querySelectorAll("[data-chap]").forEach((el) => el.onclick = () => {
+        const first = PAGES.findIndex((p) => p.chap == el.dataset.chap);
+        go(spreads().findIndex(([a, b]) => a === first || b === first));
+      });
+      const cover = R.querySelector(".cover"); if (cover) { cover.style.cursor = "pointer"; cover.onclick = () => go(1); }
+      document.querySelectorAll("[data-sw]").forEach((b) => b.onclick = () => {
+        b.classList.toggle("off");
+        if (b.dataset.sw === "css") document.getElementById("demo").classList.toggle("styled", !b.classList.contains("off"));
+      });
+      const db = document.getElementById("demoBtn");
+      if (db) db.onclick = () => { const js = document.querySelector('[data-sw="js"]'); if (!js.classList.contains("off")) db.textContent = "你好！这是 JS 在工作 👋"; };
+    }
+
+    prev.onclick = () => go(s - 1);
+    next.onclick = () => go(s + 1);
+    addEventListener("keydown", (e) => { if (e.key === "ArrowRight" || e.key === "PageDown") go(s + 1); if (e.key === "ArrowLeft" || e.key === "PageUp") go(s - 1); });
+    addEventListener("resize", () => { s = 0; paint(); });
+    paint();
+  </script>
+</body>
+</html>

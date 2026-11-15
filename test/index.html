@@ -51,10 +51,23 @@
         <div class="spine"></div>
       </div>
       <div class="book-nav">
-        <button class="text-btn" id="prevBtn" type="button">← 翻回上一页</button>
-        <div class="dots" id="dots" aria-hidden="true"></div>
+        <button class="text-btn" id="prevBtn" type="button">← 上一页</button>
+        <div class="dots" id="dots"></div>
+        <button class="toc-btn" id="tocBtn" type="button">目录 · 改答案</button>
       </div>
     </section>
+
+    <!-- 目录：随时跳回任意一题 -->
+    <div class="toc" id="toc" aria-hidden="true">
+      <div class="toc-sheet">
+        <button class="toc-close" id="tocClose" type="button" aria-label="关闭目录">×</button>
+        <p class="type toc-kicker">CONTENTS</p>
+        <h2 id="tocTitle">目录</h2>
+        <p class="toc-sub" id="tocSub"></p>
+        <ol class="toc-list" id="tocList"></ol>
+        <button class="ink-btn" id="tocGo" type="button" hidden>生成我的鉴定书 →</button>
+      </div>
+    </div>
 
     <!-- 3. 鉴定书 -->
     <section id="scene-result" class="scene">
@@ -119,6 +132,8 @@
       </article>
 
       <div class="end-actions reveal-late">
+        <button class="text-btn" id="editBtn" type="button">← 回去修改答案</button>
+        &nbsp;&nbsp;&nbsp;
         <button class="text-btn" id="restartBtn" type="button">↺ 合上书，重新翻一次</button>
         <p class="fine">可以截图保存这封信</p>
       </div>

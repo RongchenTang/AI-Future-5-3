@@ -61,8 +61,13 @@ function rightHTML(i) {
 }
 
 function renderDots() {
-  $("dots").innerHTML = QUESTIONS.map((_, k) =>
-    `<i class="${k === current ? "now" : answers[k] ? "done" : ""}"></i>`).join("");
+  $("dots").innerHTML = QUESTIONS.map((_, k) => {
+    const reachable = answers[k] || k === answers.findIndex((a) => !a);
+    const cls = k === current ? "now" : answers[k] ? "done" : "";
+    return reachable
+      ? `<button type="button" class="${cls}" data-k="${k}" aria-label="第 ${k + 1} 题"><i></i></button>`
+      : `<span class="${cls}"><i></i></span>`;
+  }).join("");
   $("prevBtn").disabled = current === 0;
 }
 
@@ -120,14 +125,61 @@ $("pageRight").addEventListener("click", (e) => {
   busy = true;
   setTimeout(() => {
     busy = false;
-    if (current < QUESTIONS.length - 1) flipTo(current + 1);
-    else showResult();
+    const allDone = answers.every(Boolean);
+    if (allDone) openToc("review");                 // 全部答完（或回头改完）→ 交卷前检查
+    else {
+      const nextEmpty = answers.findIndex((a, k) => !a && k > current);
+      const target = nextEmpty !== -1 ? nextEmpty : answers.findIndex((a) => !a);
+      flipTo(target);
+    }
   }, 520);
 });
 
 $("prevBtn").addEventListener("click", () => {
   if (current > 0) flipTo(current - 1);
 });
+
+// ---------- 目录：随时跳到任意一题修改 ----------
+function openToc(mode) {
+  const done = answers.filter(Boolean).length;
+  $("tocTitle").textContent = mode === "review" ? "交卷前，再检查一遍" : "目录";
+  $("tocSub").textContent = mode === "review"
+    ? "点任意一题可以回去修改。确认无误后，生成你的鉴定书。"
+    : `已完成 ${done} / ${QUESTIONS.length} 题 · 点任意一题跳过去`;
+  $("tocList").innerHTML = QUESTIONS.map((item, k) => {
+    const a = answers[k];
+    const idx = a ? item.options.findIndex((o) => o[1] === a) : -1;
+    const ans = idx >= 0 ? `<em>${"abcd"[idx]}.</em>${item.options[idx][0]}` : `<span class="todo">还没答</span>`;
+    return `<li><button type="button" data-k="${k}" class="${k === current ? "is-now" : ""}">
+      <b>No.${pad(k + 1)}</b><span class="q">${item.q}</span><span class="a">${ans}</span></button></li>`;
+  }).join("");
+  $("tocGo").hidden = !answers.every(Boolean);
+  $("toc").classList.add("is-open");
+  $("toc").setAttribute("aria-hidden", "false");
+}
+
+function closeToc() {
+  $("toc").classList.remove("is-open");
+  $("toc").setAttribute("aria-hidden", "true");
+}
+
+$("tocBtn").addEventListener("click", () => openToc("browse"));
+$("tocClose").addEventListener("click", closeToc);
+$("toc").addEventListener("click", (e) => { if (e.target.id === "toc") closeToc(); });
+$("tocList").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-k]");
+  if (!b) return;
+  const k = Number(b.dataset.k);
+  closeToc();
+  if (!scenes.book.classList.contains("is-active")) { show("book"); current = k; paint(k); return; }
+  if (k === current) paint(k); else setTimeout(() => flipTo(k), 250);
+});
+$("tocGo").addEventListener("click", () => { closeToc(); showResult(); });
+$("dots").addEventListener("click", (e) => {
+  const d = e.target.closest("[data-k]");
+  if (d && !busy) flipTo(Number(d.dataset.k));
+});
+$("editBtn").addEventListener("click", () => { show("book"); paint(current); openToc("review"); });
 
 // 翻开封面
 function openBook() {

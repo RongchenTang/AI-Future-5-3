@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网站构建 · 5-3</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 侧边栏：桌面端显示，当前在哪一节 -->
+  <aside class="side">
+    <a class="side-brand" href="#s-cover" data-jump>
+      <b>Web<i>Design</i></b>
+      <span class="type">CHAPTER 05 · 03<br>人工智能与未来</span>
+    </a>
+    <nav class="side-nav" id="sideNav"></nav>
+    <p class="side-keys type">← → 翻页<br>也可以直接滚动</p>
+  </aside>
+
+  <!-- 手机端顶栏 -->
+  <header class="topbar">
+    <b>Web <i>Design</i> · 5-3</b>
+    <span id="topPos" class="type">01 / 05</span>
+  </header>
+
+  <main id="deck">
+
+    <!-- 00 封面 -->
+    <section class="screen hero" id="s-cover" data-title="封面">
+      <div class="hero-copy">
+        <p class="kicker type">CHAPTER 05 · LESSON 03 · 2026</p>
+        <h1>网站构建：<br>从内容到<br><em>数字呈现</em></h1>
+        <p class="lead">先找到你想走的路，再把它变成一个别人愿意点开、读完、记住的网页。</p>
+        <button class="pill-btn" type="button" data-next>翻开今天的文件夹 →</button>
+      </div>
+      <div class="hero-stack" aria-hidden="true">
+        <div class="hs-card red"></div>
+        <div class="hs-card yellow"><b>Make it<br><i>yours</i></b><div class="stamp">LESSON<b>5-3</b></div></div>
+        <div class="hs-card ticket">
+          <p class="type">TODAY'S TASK</p>
+          <dl><dt class="type">STEP 01</dt><dd>翻开职业之书</dd><dt class="type">STEP 02</dt><dd>看懂一个网页</dd><dt class="type">STEP 03</dt><dd>做出你的网站</dd></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 文件夹目录 -->
+    <section class="screen folder-screen" id="s-folder" data-title="今日目录">
+      <div class="sec-head center">
+        <span class="no">00</span>
+        <div><h2>今天的文件夹里有什么？</h2><p>点文件夹打开 · 点任意一页跳到那一节 · 可以拖动旋转</p></div>
+      </div>
+      <div class="folder-scene" id="folderScene">
+        <div class="rig" id="rig"></div>
+      </div>
+    </section>
+
+    <!-- 02 职业之书 -->
+    <section class="screen" id="s-book" data-title="职业之书">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <div><h2>先翻开一本书，找找你想走的路</h2><p>18 道生活小场景 · 3 分钟 · 没有对错</p></div>
+      </div>
+      <div class="book-grid">
+        <div class="qr-card">
+          <div class="tape"></div>
+          <img src="assets/test-qr.svg" alt="职业之书测试二维码">
+          <p class="type">SCAN ME</p>
+          <a href="../test/" target="_blank" rel="noopener">或点这里在新窗口打开 ↗</a>
+        </div>
+        <div class="book-steps">
+          <div class="step"><b>1</b><div><h3>扫码，翻开职业之书</h3><p>凭第一反应选。点错了可以打开「目录」回去改。</p></div></div>
+          <div class="step"><b>2</b><div><h3>收下你的鉴定书</h3><p>看看你的主类型和副类型，以及可以去试试的方向。</p></div></div>
+          <div class="step"><b>3</b><div><h3>保存那张票根</h3><p>票根上写着「你的网站可以长这样」，还有一段提示词，第二节课会用到。</p></div></div>
+          <div class="note">课堂小调查：举手看看，全班哪种类型的人最多？</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 案例 -->
+    <section class="screen" id="s-cases" data-title="网站案例">
+      <div class="sec-head">
+        <span class="no">02</span>
+        <div><h2>优秀的个人网站长什么样？</h2><p>边看边想：第一眼你看到了什么？它是怎么让你记住这个人的？</p></div>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <span class="case-no">01</span><span class="tag type">PRODUCT DESIGNER</span>
+          <h3>Sara Youssry</h3>
+          <p>用空间感、插画物件和模块入口组织个人经历，像走进一间有性格的作品房间。</p>
+          <p class="look">看点：<b>风格就是第一印象</b></p>
+          <a href="https://sarayoussry.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">02</span><span class="tag type">CREATIVE DEVELOPER</span>
+          <h3>Wodniack</h3>
+          <p>开发者作品集，用动效和排版把技术能力变得"看得见"。</p>
+          <p class="look">看点：<b>技术也可以很好看</b></p>
+          <a href="https://wodniack.dev/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">03</span><span class="tag type">3D · PLAYFUL</span>
+          <h3>Bruno Simon</h3>
+          <p>整个网站是一个 3D 小游戏，开着小车逛他的作品。（加载较慢，课前先打开）</p>
+          <p class="look">看点：<b>想象力可以有多大</b></p>
+          <a href="https://bruno-simon.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">04</span><span class="tag type">ENGINEER · CLEAN</span>
+          <h3>Brittany Chiang</h3>
+          <p>克制的单页：左边固定"我是谁"，右边滚动经历和项目，层级非常清楚。</p>
+          <p class="look">看点：<b>不花哨也能很专业</b></p>
+          <a href="https://brittanychiang.com/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case">
+          <span class="case-no">05</span><span class="tag type">PERSONAL SITE</span>
+          <h3>不二 · Esther</h3>
+          <p>（待补充：请老师告诉我一句话介绍这个网站的特点）</p>
+          <p class="look">看点：<b>待补充</b></p>
+          <a href="https://hiesther.me/" target="_blank" rel="noopener">打开网站 ↗</a>
+        </article>
+        <article class="case ask">
+          <h3>观察三问</h3>
+          <ol>
+            <li>第一眼你看到了什么？</li>
+            <li>它的整体风格是什么？</li>
+            <li>它如何组织个人信息、能力和作品？</li>
+          </ol>
+          <p class="note">如果是你，你更想做哪一种？</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 三件套 -->
+    <section class="screen" id="s-basics" data-title="网页三件套">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <div><h2>网页由什么构成？</h2><p>打开、关掉开关，看看每一层负责什么。</p></div>
+      </div>
+      <div class="lab">
+        <div class="switches">
+          <button class="sw on" type="button" data-layer="html"><span><b>HTML</b><small>骨架 · 页面里<em>有什么</em></small></span><i class="knob"></i></button>
+          <button class="sw on" type="button" data-layer="css"><span><b>CSS</b><small>衣服 · 页面<em>长什么样</em></small></span><i class="knob"></i></button>
+          <button class="sw on" type="button" data-layer="js"><span><b>JavaScript</b><small>机关 · 页面<em>能做什么</em></small></span><i class="knob"></i></button>
+          <div class="note">还记得开场那个会转的文件夹吗？它的 3D 效果全是 <b>CSS</b> 做的。
+            <button class="link" type="button" data-goto="s-folder">回去看看 ↩</button></div>
+        </div>
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="type">my-website.html</span></div>
+          <div class="demo styled" id="demo">
+            <h4>小林的个人网站</h4>
+            <p>数据分析方向 · 喜欢把复杂的事情讲清楚</p>
+            <div class="tags"><span>Excel</span><span>Python</span><span>调研</span></div>
+            <button type="button" id="demoBtn">了解更多</button>
+          </div>
+          <div class="demo-empty" id="demoEmpty">（没有 HTML，就什么都没有）</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 翻页时扫过的那张纸 -->
+  <div class="turn" id="turn" aria-hidden="true"><div class="turn-sheet"><span class="type" id="turnNo"></span><b id="turnTitle"></b></div></div>
+  <div class="pager">
+    <button type="button" id="prevBtn" aria-label="上一节">←</button>
+    <span id="pagerPos" class="type">01 / 05</span>
+    <button type="button" id="nextBtn" aria-label="下一节">→</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

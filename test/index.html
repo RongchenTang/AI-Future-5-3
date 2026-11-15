@@ -2,90 +2,126 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>职业倾向小测试</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>职业之书</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
+  <!-- 侧边信息（桌面端） -->
+  <aside class="meta">
+    <p class="type">Est. 2026<br>人工智能与未来<br>5-3 · 网站构建</p>
+    <p class="type meta-foot"><span class="dot"></span>THE BOOK OF PATHS<br>18 QUESTIONS<br>6 TYPES</p>
+  </aside>
 
-    <!-- 开始页 -->
-    <section id="screen-intro" class="screen is-active">
-      <p class="eyebrow">人工智能与未来 · 5-3 网站构建</p>
-      <h1>你更适合<br>做什么样的工作？</h1>
-      <p class="lead">18 道生活小场景，凭第一反应选择。测完你会得到自己的职业倾向类型，以及一份「你的个人网站可以长这样」的建议。</p>
-      <ul class="intro-points">
-        <li><b>18</b><span>道题</span></li>
-        <li><b>3</b><span>分钟左右</span></li>
-        <li><b>6</b><span>种类型</span></li>
-      </ul>
-      <button class="btn primary" id="startBtn" type="button">开始测试</button>
-      <p class="fineprint">基于霍兰德职业兴趣理论（RIASEC）改编，用于课堂探索，不是职业诊断。没有对错，选最像你的那个就好。</p>
-    </section>
+  <main class="desk">
 
-    <!-- 答题页 -->
-    <section id="screen-quiz" class="screen">
-      <div class="quiz-top">
-        <button class="link-btn" id="prevBtn" type="button">← 上一题</button>
-        <span id="progressText">1 / 18</span>
-      </div>
-      <div class="progress"><span id="progressBar"></span></div>
-      <h2 id="questionText"></h2>
-      <div id="options" class="options"></div>
-    </section>
-
-    <!-- 结果页 -->
-    <section id="screen-result" class="screen">
-      <div class="result-card" id="resultCard">
-        <p class="eyebrow">我的职业倾向</p>
-        <div class="combo">
-          <div class="combo-item main">
-            <small>主类型</small>
-            <strong id="mainName"></strong>
-            <em id="mainNick"></em>
+    <!-- 1. 封面 -->
+    <section id="scene-cover" class="scene is-active">
+      <div class="book-closed" id="bookClosed" role="button" tabindex="0" aria-label="翻开职业之书">
+        <div class="book-pages-edge"></div>
+        <div class="cover" id="cover">
+          <div class="cover-front">
+            <div class="cover-notch"></div>
+            <p class="type cover-vol">VOL. 5-3</p>
+            <h1><span class="en">The Book<br><i>of Paths</i></span><span class="zh">职业之书</span></h1>
+            <svg class="cover-doodle" viewBox="0 0 120 70" aria-hidden="true">
+              <path d="M10 55 C 30 20, 50 20, 60 40 S 95 60, 110 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 6"/>
+              <circle cx="10" cy="55" r="4" fill="currentColor"/>
+              <path d="M104 12 l8 2 l-3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="cover-stamp">
+              <span>QUESTIONS</span>
+              <b>18</b>
+            </div>
+            <p class="cover-sub">翻开它，<br>找一找你想走的路</p>
           </div>
-          <span class="combo-x">×</span>
-          <div class="combo-item">
-            <small>副类型</small>
-            <strong id="subName"></strong>
-            <em id="subNick"></em>
-          </div>
+          <div class="cover-back"></div>
         </div>
-        <p id="mainDesc" class="desc"></p>
-        <p id="subDesc" class="desc sub"></p>
-        <p id="tieNote" class="tie-note" hidden></p>
-
-        <h3>我的优势关键词</h3>
-        <div id="strengths" class="chips"></div>
-
-        <h3>可以探索的方向</h3>
-        <ul id="directions" class="directions"></ul>
-        <p class="fineprint">这不是标准答案，而是一个值得去试一试的方向。很多人的兴趣会随着经历而变化。</p>
       </div>
+      <p class="tap-hint"><span class="pulse"></span>轻触封面，翻开这本书</p>
+      <p class="fine">基于霍兰德职业兴趣理论（RIASEC）改编 · 课堂探索用 · 没有对错</p>
+    </section>
 
-      <div class="result-card">
-        <p class="eyebrow">你的个人网站可以长这样</p>
-        <h3 id="siteStyle" class="site-style"></h3>
-        <div id="palette" class="palette"></div>
-        <dl class="site-info">
-          <dt>首屏重点</dt><dd id="siteHero"></dd>
-          <dt>推荐结构</dt><dd id="siteStructure"></dd>
-        </dl>
+    <!-- 2. 答题：一本摊开的书 -->
+    <section id="scene-book" class="scene">
+      <div class="book-open">
+        <div class="page page-left" id="pageLeft"></div>
+        <div class="page page-right" id="pageRight"></div>
+        <div class="spine"></div>
       </div>
-
-      <div class="result-card">
-        <p class="eyebrow">我的网站定位提示词</p>
-        <p class="hint">复制下面这段，等会儿粘贴进网页生成提示词的「视觉定位」部分。</p>
-        <pre id="positionPrompt" class="prompt"></pre>
-        <button class="btn primary" id="copyBtn" type="button">复制提示词</button>
+      <div class="book-nav">
+        <button class="text-btn" id="prevBtn" type="button">← 翻回上一页</button>
+        <div class="dots" id="dots" aria-hidden="true"></div>
       </div>
+    </section>
 
-      <div class="result-card">
-        <p class="eyebrow">六种类型得分</p>
-        <div id="scoreBars" class="bars"></div>
+    <!-- 3. 鉴定书 -->
+    <section id="scene-result" class="scene">
+      <article class="letter" id="letter">
+        <div class="tape tape-l"></div>
+        <div class="tape tape-r"></div>
+        <header class="letter-head">
+          <p class="type">CERTIFICATE · NO. <span id="certNo">001</span></p>
+          <h2>职业倾向鉴定书</h2>
+          <div class="seal" id="seal">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="sealPath" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+              <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              <circle cx="60" cy="60" r="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text><textPath href="#sealPath">THE BOOK OF PATHS · 2026 · 5-3 ·</textPath></text>
+            </svg>
+            <b>已鉴定</b>
+          </div>
+        </header>
+
+        <p class="hand reveal">亲爱的同学：</p>
+        <p class="hand reveal">翻完这本书，我发现你的主类型是</p>
+        <div class="big-type reveal">
+          <strong id="mainName"></strong>
+          <svg class="squiggle" viewBox="0 0 220 16" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 C 30 2, 50 14, 80 8 S 140 2, 170 9 S 205 12, 218 6"/></svg>
+          <em id="mainNick"></em>
+        </div>
+        <p class="hand reveal" id="mainDesc"></p>
+        <p class="hand reveal">你身上还带着一点 <b class="mark" id="subName"></b><span id="subNick" class="nick-inline"></span> 的影子：<span id="subDesc"></span></p>
+        <p class="hand note reveal" id="tieNote" hidden></p>
+
+        <h3 class="reveal">你的闪光点</h3>
+        <div class="circled reveal" id="strengths"></div>
+
+        <h3 class="reveal">可以去试试的方向</h3>
+        <ul class="paths reveal" id="directions"></ul>
+        <p class="hand small reveal">这不是标准答案，而是一张地图。兴趣会随着经历慢慢变化，多去试试。</p>
+
+        <h3 class="reveal">每一种你，各占几分</h3>
+        <div class="tally reveal" id="scoreBars"></div>
+
+        <p class="sign reveal">—— 职业之书 敬上</p>
+      </article>
+
+      <!-- 撕下来的网站建议票根 -->
+      <article class="ticket reveal-late">
+        <div class="ticket-side type">YOUR WEBSITE · 5-3 · KEEP THIS</div>
+        <div class="ticket-body">
+          <p class="type label">YOUR WEBSITE COULD LOOK LIKE</p>
+          <h3 id="siteStyle"></h3>
+          <div class="swatches" id="palette"></div>
+          <dl>
+            <dt class="type">FIRST SCREEN</dt><dd id="siteHero"></dd>
+            <dt class="type">STRUCTURE</dt><dd id="siteStructure"></dd>
+          </dl>
+          <div class="tear type"><span>TEAR HERE FOR YOUR PROMPT</span><span>✂</span></div>
+          <p class="type label">MY WEBSITE PROMPT</p>
+          <p class="prompt-text" id="positionPrompt"></p>
+          <button class="ink-btn" id="copyBtn" type="button">复制这段提示词</button>
+          <p class="fine">等会儿把它粘贴进网页生成提示词的「视觉定位」部分。</p>
+        </div>
+      </article>
+
+      <div class="end-actions reveal-late">
+        <button class="text-btn" id="restartBtn" type="button">↺ 合上书，重新翻一次</button>
+        <p class="fine">可以截图保存这封信</p>
       </div>
-
-      <button class="btn ghost" id="restartBtn" type="button">重新测试</button>
     </section>
 
   </main>

@@ -1,0 +1,54 @@
+/* 字体都放在本地，国内网络也能正常加载。
+   中文字体只保留了页面用到的字；如果改了题目里的文字，新字会自动用系统楷体/宋体顶上。
+   LXGW WenKai（霞鹜文楷）、Noto Serif SC、Fraunces、Special Elite 均为 SIL OFL 开源字体。 */
+
+@font-face {
+  font-family: "LXGW WenKai";
+  src: url("lxgw-wenkai.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif SC";
+  src: url("noto-serif-sc-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("fraunces-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("fraunces-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("fraunces-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("fraunces-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Special Elite";
+  src: url("special-elite-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}

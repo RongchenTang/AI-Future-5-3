@@ -7,7 +7,7 @@
 | 课件 | https://rongchentang.github.io/AI-Future-5-3/ |
 | 职业之书（测试） | https://rongchentang.github.io/AI-Future-5-3/test/ |
 | 设计说明 | [docs/5-3-课件设计说明.md](docs/5-3-课件设计说明.md) |
-| 能力盘点 skill | [skills/ability-inventory/SKILL.md](skills/ability-inventory/SKILL.md) |
+| 能力挖掘教练（skill） | https://github.com/RongchenTang/capability-mining-coach |
 
 ## 使用
 - 课件：按 `→` / `←` 或翻页笔翻页，也可以直接滚动；左侧目录可跳转。
@@ -17,7 +17,6 @@
 ```
 index.html  css/  js/  assets/  fonts/   课件
 test/                                     职业之书测试
-skills/ability-inventory/                 能力盘点 skill
 docs/                                     设计说明
 styles/  demo/                            风格样稿与原型（存档）
 ```

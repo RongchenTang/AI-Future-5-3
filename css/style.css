@@ -481,6 +481,9 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
   .case h3 { margin: 6px 0 4px; }
   .case .look { margin-top: 6px; }
   .case a { padding-top: 8px; }
+  .case-no { font-size: 28px; }
+  .case { padding: 14px 18px; }
+  .ask-strip { padding: 8px 14px; }
 }
 
 /* ---------- 平板 ---------- */
@@ -592,3 +595,7 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
   .side-brand span { margin-top: 8px; }
   .side-nav a { padding: 1px 0; }
 }
+
+/* 案例页：观察三问改为底部便利贴 */
+.ask-strip { margin-top: clamp(10px, 1.6vh, 22px); transform: rotate(-.3deg); }
+.ask-strip b { margin-right: 12px; font-family: var(--zh); }

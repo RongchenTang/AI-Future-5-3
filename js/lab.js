@@ -251,7 +251,7 @@ const RULES = [
     t: "留白对齐",
     text: `<h3>⑤ 留白与对齐</h3><p class="motto">页面越复杂，越需要留白；<br>信息越多，越需要对齐。</p>
       <p>留白不是浪费，是帮眼睛分组：靠近的属于一组，拉开的是另一个话题。</p>
-      <p>打开对齐线看看：好看的页面背后，都有一张看不见的网格。</p>`,
+      <p>勾选「对齐线」再切换改前 / 改后：好看的页面，所有元素都贴着同一根看不见的线。</p>`,
     say: "模块之间留白充足，间距使用 8px 的倍数，所有元素左对齐、边缘整齐。",
     controls: () => `${seg(["改前", "改后"], 0)}<label>留白 <input type="range" id="rgap" min="4" max="40" value="6"></label><label><input type="checkbox" id="rgrid"> 对齐线</label>`,
     setup: () => {

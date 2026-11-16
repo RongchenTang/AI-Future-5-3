@@ -254,7 +254,7 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
 /* ---------- 小林的网站（实验 ②③ 与设计原则共用） ---------- */
 .xl {
   --c: #c4583a; --r: 12px; --g: 24px; --hs: 36px; --hf: var(--zh);
-  display: grid; gap: var(--g); padding: calc(var(--g) + 6px); background: #fffdf8; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 15px; color: #2b2b2b; transition: all .3s;
+  --px: calc(var(--g) + 6px); display: grid; gap: var(--g); padding: var(--px); background: #fffdf8; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 15px; color: #2b2b2b; transition: all .3s;
 }
 .xl-hero { display: flex; align-items: center; gap: 16px; }
 .xl-avatar { flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--c); color: #fff; font-size: 24px; font-weight: 700; transition: all .3s; }
@@ -367,7 +367,9 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
 .xl.pathed .path-no { display: grid; place-items: center; position: absolute; left: -14px; top: -10px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; font-family: var(--type); z-index: 1; }
 .xl.messy { --g: 6px; }
 .xl.messy > :nth-child(2) { margin-left: 34px; } .xl.messy > :nth-child(3) { margin-left: 8px; width: 82%; } .xl.messy > :nth-child(4) { margin-left: 52px; }
-.xl.grid-on { background-image: linear-gradient(90deg, rgba(196,88,58,.35) 1px, transparent 1px); background-size: calc(100% / 6) 100%; background-position: calc(var(--g) + 6px) 0; }
+.xl.grid-on { position: relative; }
+.xl.grid-on::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--px) - 1px); border-left: 2px dashed var(--terra); pointer-events: none; z-index: 2; }
+.xl.grid-on::after { content: "对齐线"; position: absolute; top: 6px; left: calc(var(--px) + 6px); padding: 1px 6px; background: var(--terra); color: #fff; font-size: 11px; border-radius: 3px; z-index: 2; }
 .xl.rainbow h4 { color: #e0249a; font-family: "Comic Sans MS", cursive; }
 .xl.rainbow .xl-hero p { color: #1aa34a; font-family: "Courier New", monospace; }
 .xl.rainbow .xl-avatar { background: #ff8a00; }
@@ -517,7 +519,7 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
   .hw-col { padding: 14px 16px; }
   .make-steps li { padding: 9px 14px; }
   .code { font-size: 11.5px; line-height: 1.5; padding: 9px 12px; margin-bottom: 10px; }
-  .xl { gap: calc(var(--g) * .75); padding: 20px; }
+  .xl { gap: calc(var(--g) * .75); --px: 20px; }
   .studio-form label { font-size: .8em; }
   .studio-form input, .studio-form textarea, .studio-form select { padding: 5px 9px; font-size: 13px; }
   .prompt-out { max-height: min(58vh, 520px); }
@@ -543,7 +545,7 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
   .f-row { grid-template-columns: 1fr; }
   .report-row { grid-template-columns: 1fr; gap: 2px; }
   .rule-tabs button { padding: 6px 10px; font-size: .85em; }
-  .xl { padding: 16px; } .xl-hero { gap: 10px; } .xl-avatar { width: 48px; height: 48px; }
+  .xl { --px: 16px; } .xl-hero { gap: 10px; } .xl-avatar { width: 48px; height: 48px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

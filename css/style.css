@@ -551,3 +551,44 @@ code { font-family: "Cascadia Code", Consolas, "Courier New", monospace; font-si
 @media (prefers-reduced-motion: reduce) {
   .turn.go .turn-sheet { animation-duration: .01s; animation-delay: 0s; }
 }
+
+/* ---------- 05 第 0 步：隐喻卡 & 模式切换 ---------- */
+.concept { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(18px, 3vw, 44px); align-items: start; }
+.meta-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.meta { display: grid; gap: 4px; align-content: start; min-height: 130px; padding: 14px 14px 12px; text-align: left; background: var(--paper); border: 2px solid transparent; border-radius: 4px; box-shadow: 0 8px 18px rgba(60,40,20,.08); cursor: pointer; transition: transform .2s, border-color .2s, background .2s; }
+.meta:nth-child(odd) { transform: rotate(-.8deg); }
+.meta:nth-child(even) { transform: rotate(.7deg); }
+.meta:hover { transform: translateY(-3px); }
+.meta .emo { font-size: 26px; line-height: 1.2; }
+.meta b { font-family: var(--zh); font-size: 1.02em; }
+.meta small { color: var(--soft); font-size: .82em; line-height: 1.5; }
+.meta.on { border-color: var(--terra); background: #fff7ea; }
+.meta.flicker { background: var(--mustard); }
+.concept-side { display: grid; gap: 12px; }
+.draw { justify-self: start; font-size: 1em; padding: 11px 24px; }
+.own { display: grid; gap: 4px; font-size: .86em; color: var(--soft); }
+.own input { padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 14px; }
+.picked { padding: 12px 14px; background: rgba(244,189,59,.4); transform: rotate(-.5deg); }
+.picked b { margin: 0 4px; font-family: var(--zh); }
+.opt-line { display: flex; gap: 10px; align-items: flex-start; font-size: .9em; cursor: pointer; }
+.opt-line input { margin-top: 5px; accent-color: var(--terra); width: 16px; height: 16px; flex: none; }
+.opt-line b { display: block; font-family: var(--zh); }
+.opt-line span { color: var(--soft); }
+.mode-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.mode-tip { font-size: .85em; color: var(--terra); }
+@media (max-height: 940px) and (min-width: 761px) {
+  .meta { min-height: 112px; padding: 10px 12px; }
+  .meta .emo { font-size: 22px; }
+}
+@media (max-width: 1100px) {
+  .concept { grid-template-columns: 1fr; }
+  .meta-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 侧栏在矮屏幕上收紧 */
+@media (max-height: 800px) and (min-width: 1101px) {
+  .side { padding: 24px 22px; gap: 10px; }
+  .side-brand b { font-size: 26px; }
+  .side-brand span { margin-top: 8px; }
+  .side-nav a { padding: 1px 0; }
+}

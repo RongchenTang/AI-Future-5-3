@@ -143,7 +143,7 @@ const FOLDER = [
   { tab: "网站案例", en: "Why a Website", c: "var(--sage)", to: "s-cases" },
   { tab: "三件套", en: "HTML · CSS · JS", c: "var(--dusty)", to: "s-lab1" },
   { tab: "设计原则", en: "Five Rules", c: "var(--rose)", to: "s-rules" },
-  { tab: "提示词", en: "Prompt Studio", c: "var(--stone)", to: "s-studio" },
+  { tab: "提示词", en: "Prompt Studio", c: "var(--stone)", to: "s-concept" },
   { tab: "动手实践", en: "Make It", c: "#f2d58a", to: "s-make" },
   { tab: "作业总结", en: "See You", c: "#e7b19f", to: "s-hw" }
 ];

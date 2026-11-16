@@ -333,6 +333,24 @@ button { background: #26221e;
     </section>
 
     <!-- ============ 05-1 提示词工作台 ============ -->
+    <section class="screen" id="s-concept" data-title="提示词 · 第 0 步 定概念" data-no="05" data-group="提示词">
+      <div class="sec-head">
+        <span class="no">05</span>
+        <div><h2>第 0 步：我的网站是一个______</h2><p>同一段提示词，做出来的网站会很像。先给你的网站找一个隐喻，它会决定布局、交互和语气。</p></div>
+      </div>
+      <div class="concept">
+        <div class="meta-cards" id="metaCards"></div>
+        <div class="concept-side">
+          <button class="ink-btn draw" type="button" id="drawBtn">🎲 随机抽一张</button>
+          <label class="own">或者自己写<input id="ownMeta" placeholder="例：一间深夜食堂，每道菜是一个项目" autocomplete="off"></label>
+          <div class="picked" id="pickedMeta">还没选：基础模式也完全可以。</div>
+          <label class="opt-line"><input type="checkbox" id="optIp" checked><span><b>从我的 IP 形象里取色</b>把 IP 形象图发给 AI，让配色和气质跟它一致</span></label>
+          <label class="opt-line"><input type="checkbox" id="optThree" checked><span><b>先要 3 个方向，再写代码</b>你来挑、来组合，这是你的设计决定</span></label>
+          <p class="aside-note">Bruno 的游戏、不二的电脑桌面，本质上都是一个隐喻。选好后翻到下一页，切到「个性模式」。</p>
+        </div>
+      </div>
+    </section>
+
     <section class="screen" id="s-studio" data-title="提示词工作台" data-no="05" data-group="提示词">
       <div class="sec-head">
         <span class="no">05</span>
@@ -340,6 +358,10 @@ button { background: #26221e;
       </div>
       <div class="studio">
         <form class="studio-form" id="studioForm" autocomplete="off">
+          <div class="mode-row">
+            <div class="seg" id="modeSeg"><button type="button" class="on" data-mode="basic">基础模式</button><button type="button" data-mode="custom">个性模式</button></div>
+            <span class="mode-tip" id="modeTip">稳稳做出一个及格的网站</span>
+          </div>
           <div class="f-row">
             <label>昵称 / 姓名<input name="name" placeholder="例：小林"></label>
             <label>专业年级<input name="major" placeholder="例：软件工程 2024 级"></label>
@@ -364,7 +386,7 @@ button { background: #26221e;
                 <option>作品按类别切换</option>
               </select>
             </label>
-            <label>特别的创意（可选）<input name="idea" placeholder="例：做成一座花园，走到尽头才发现主人是谁"></label>
+            <label>特别的创意（可选）<input name="idea" placeholder="例：首屏放我的 IP 形象，鼠标移动时它会眨眼"></label>
           </div>
         </form>
         <div class="studio-out">
@@ -451,7 +473,8 @@ button { background: #26221e;
           <label><input type="checkbox"><span>用卡片、标签、图片重新组织内容，不是文字堆砌</span></label>
           <label><input type="checkbox"><span>图片都能显示，没有变形</span></label>
           <label><input type="checkbox"><span>内容都是真的，没有 AI 编出来的经历</span></label>
-          <p class="self-count" id="selfCount">0 / 8</p>
+          <label><input type="checkbox"><span>有一个记忆点：别人看完能记住它的特别之处</span></label>
+          <p class="self-count" id="selfCount">0 / 9</p>
         </div>
       </div>
     </section>

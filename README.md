@@ -5,6 +5,7 @@
 | 内容 | 网址 |
 |---|---|
 | 课件 | https://rongchentang.github.io/AI-Future-5-3/ |
+| 本地版下载（离线备用） | [download/courseware-offline.zip](download/courseware-offline.zip) |
 | 职业之书（测试） | https://rongchentang.github.io/AI-Future-5-3/test/ |
 | 设计说明 | [docs/5-3-课件设计说明.md](docs/5-3-课件设计说明.md) |
 | 能力挖掘教练（skill） | https://github.com/RongchenTang/capability-mining-coach |

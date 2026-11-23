@@ -127,11 +127,30 @@
       <p class="note ask-strip"><b>观察三问</b>① 第一眼看到了什么？ ② 整体风格是什么？ ③ 怎样组织信息和作品？ ——如果是你，想做哪一种？</p>
     </section>
 
-    <!-- ============ 03-1 开关实验 ============ -->
-    <section class="screen" id="s-lab1" data-title="三件套 · 开关实验" data-no="03" data-group="三件套">
+    <!-- ============ 03 设计原则 ============ -->
+    <section class="screen" id="s-rules" data-title="五条设计原则" data-no="03">
       <div class="sec-head">
         <span class="no">03</span>
-        <div><h2>网页由什么构成？</h2><p>实验 ① 开关实验：打开、关掉每一层，看看它负责什么。</p></div>
+        <div><h2>好网站好在哪里？五条设计原则</h2><p>刚才那些网站让你记住了什么？它们都做到了这五条。以后 AI 负责生成，你负责判断。</p></div>
+      </div>
+      <div class="rule-tabs" id="ruleTabs" role="tablist"></div>
+      <div class="rule-body">
+        <div class="rule-text" id="ruleText"></div>
+        <div class="rule-demo">
+          <div class="rule-controls" id="ruleControls"></div>
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span class="type">小林的个人网站</span></div>
+            <div class="rd-stage" id="ruleStage"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04-1 开关实验 ============ -->
+    <section class="screen" id="s-lab1" data-title="三件套 · 开关实验" data-no="04" data-group="三件套">
+      <div class="sec-head">
+        <span class="no">04</span>
+        <div><h2>看过这么多好网站，它们是怎么做出来的？</h2><p>网页由三层构成。实验 ① 开关实验：打开、关掉每一层，看看它负责什么。</p></div>
       </div>
       <div class="lab">
         <div class="switches">
@@ -176,10 +195,10 @@ button { background: #26221e;
       </div>
     </section>
 
-    <!-- ============ 03-2 点哪里看代码 ============ -->
-    <section class="screen" id="s-lab2" data-title="三件套 · 点哪看代码" data-no="03" data-group="三件套">
+    <!-- ============ 04-2 点哪里看代码 ============ -->
+    <section class="screen" id="s-lab2" data-title="三件套 · 点哪看代码" data-no="04" data-group="三件套">
       <div class="sec-head">
-        <span class="no">03</span>
+        <span class="no">04</span>
         <div><h2>页面上的每样东西，都是一行代码</h2><p>实验 ② 鼠标指向（或点一下）左边网页的任何部分，看看它对应哪几行代码。</p></div>
       </div>
       <div class="lab2">
@@ -211,10 +230,10 @@ button { background: #26221e;
       </div>
     </section>
 
-    <!-- ============ 03-3 动手改一改 ============ -->
-    <section class="screen" id="s-lab3" data-title="三件套 · 动手改一改" data-no="03" data-group="三件套">
+    <!-- ============ 04-3 动手改一改 ============ -->
+    <section class="screen" id="s-lab3" data-title="三件套 · 动手改一改" data-no="04" data-group="三件套">
       <div class="sec-head">
-        <span class="no">03</span>
+        <span class="no">04</span>
         <div><h2>你跟 AI 说「标题再大一点」，<br>AI 做的就是改这一行</h2><p>实验 ③ 拖动滑块、换颜色，看看网页和 CSS 一起变化。</p></div>
       </div>
       <div class="lab3">
@@ -247,10 +266,10 @@ button { background: #26221e;
       </div>
     </section>
 
-    <!-- ============ 03-4 F12 ============ -->
-    <section class="screen" id="s-lab4" data-title="三件套 · F12 魔法" data-no="03" data-group="三件套">
+    <!-- ============ 04-4 F12 ============ -->
+    <section class="screen" id="s-lab4" data-title="三件套 · F12 魔法" data-no="04" data-group="三件套">
       <div class="sec-head">
-        <span class="no">03</span>
+        <span class="no">04</span>
         <div><h2>魔法时刻：按下 F12</h2><p>实验 ④ 任何网站都是一份代码，你可以在自己的浏览器里「改写」它。</p></div>
       </div>
       <div class="f12">
@@ -273,10 +292,10 @@ button { background: #26221e;
       </div>
     </section>
 
-    <!-- ============ 03-5 小测 ============ -->
-    <section class="screen" id="s-quiz" data-title="三件套 · 猜猜是哪层" data-no="03" data-group="三件套">
+    <!-- ============ 04-5 小测 ============ -->
+    <section class="screen" id="s-quiz" data-title="三件套 · 猜猜是哪层" data-no="04" data-group="三件套">
       <div class="sec-head">
-        <span class="no">03</span>
+        <span class="no">04</span>
         <div><h2>猜猜是哪一层？</h2><p>快问快答：下面这些变化，是改了 HTML、CSS 还是 JavaScript？</p></div>
       </div>
       <div class="quiz" id="quiz"></div>
@@ -312,25 +331,7 @@ button { background: #26221e;
       </div>
     </section>
 
-    <!-- ============ 04 设计原则 ============ -->
-    <section class="screen" id="s-rules" data-title="五条设计原则" data-no="04">
-      <div class="sec-head">
-        <span class="no">04</span>
-        <div><h2>做好网页的五条原则</h2><p>AI 负责生成，人负责判断。判断的依据，就是这五条。</p></div>
-      </div>
-      <div class="rule-tabs" id="ruleTabs" role="tablist"></div>
-      <div class="rule-body">
-        <div class="rule-text" id="ruleText"></div>
-        <div class="rule-demo">
-          <div class="rule-controls" id="ruleControls"></div>
-          <div class="browser">
-            <div class="bar"><i></i><i></i><i></i><span class="type">小林的个人网站</span></div>
-            <div class="rd-stage" id="ruleStage"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- ============ 05-1 提示词工作台 ============ -->
     <section class="screen" id="s-concept" data-title="提示词 · 第 0 步 定概念" data-no="05" data-group="提示词">
       <div class="sec-head">
@@ -540,8 +541,8 @@ button { background: #26221e;
       </div>
       <div class="recap">
         <div class="recap-card"><span>01</span><h3>认识自己</h3><p>翻开职业之书，找到想走的路</p></div>
-        <div class="recap-card"><span>02</span><h3>看懂网页</h3><p>HTML 骨架 · CSS 衣服 · JS 机关</p></div>
-        <div class="recap-card"><span>03</span><h3>用原则判断</h3><p>定位 · 层级 · 路径 · 统一 · 留白</p></div>
+        <div class="recap-card"><span>02</span><h3>学会欣赏</h3><p>定位 · 层级 · 路径 · 统一 · 留白</p></div>
+        <div class="recap-card"><span>03</span><h3>看懂网页</h3><p>HTML 骨架 · CSS 衣服 · JS 机关</p></div>
         <div class="recap-card"><span>04</span><h3>让 AI 生成</h3><p>写清楚提示词，再一轮轮修改</p></div>
       </div>
       <div class="next-up">
